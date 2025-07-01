@@ -1,0 +1,31 @@
+# MoveIt uses this configuration for controller management
+
+moveit_controller_manager: moveit_simple_controller_manager/MoveItSimpleControllerManager
+
+trajectory_execution:
+  allowed_execution_duration_scaling: 1.2
+  allowed_goal_duration_margin: 0.5
+  allowed_start_tolerance: 0.01
+  trajectory_duration_monitoring: false 
+
+moveit_simple_controller_manager:
+  controller_names:
+    - arm_controller
+    - hand_controller
+
+  arm_controller:
+    type: FollowJointTrajectory
+    joints:
+      - base_link_link1_to_base_link
+      - link1_link2_to_link1
+      - link2_link3_to_link2
+      - link3_link4_to_link3
+      - link4_link5_to_link4
+      - link5_link6_to_link5
+    action_ns: follow_joint_trajectory
+    default: true
+  hand_controller:
+    type: GripperCommand
+    joints:
+      - AX_12A_04_Revolute-34
+    action_ns: gripper_cmd

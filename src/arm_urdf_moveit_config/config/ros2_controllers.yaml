@@ -1,0 +1,35 @@
+# This config file is used by ros2_control
+controller_manager:
+  ros__parameters:
+    update_rate: 100  # Hz
+
+    arm_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
+      action_server_name: follow_joint_trajectory
+
+
+    hand_controller:
+      type: position_controllers/GripperActionController
+      action_server_name: gripper_cmd
+
+
+    joint_state_broadcaster:
+      type: joint_state_broadcaster/JointStateBroadcaster
+
+arm_controller:
+  ros__parameters:
+    joints:
+      - base_link_link1_to_base_link
+      - link1_link2_to_link1
+      - link2_link3_to_link2
+      - link3_link4_to_link3
+      - link4_link5_to_link4
+      - link5_link6_to_link5
+    command_interfaces:
+      - position
+    state_interfaces:
+      - position
+      - velocity
+hand_controller:
+  ros__parameters:
+    joint: AX_12A_04_Revolute-34
