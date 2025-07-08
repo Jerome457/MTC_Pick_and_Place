@@ -8,6 +8,13 @@
                 <!-- By default, set up controllers for simulation. This won't work on real hardware -->
                 <plugin>mock_components/GenericSystem</plugin>
             </hardware>
+            <joint name="AX_12A_04_Revolute-34">
+                <command_interface name="position"/>
+                <state_interface name="position">
+                  <param name="initial_value">${initial_positions['AX_12A_04_Revolute-34']}</param>
+                </state_interface>
+                <state_interface name="velocity"/>
+            </joint>
             <joint name="base_link_link1_to_base_link">
                 <command_interface name="position"/>
                 <state_interface name="position">
@@ -47,13 +54,6 @@
                 <command_interface name="position"/>
                 <state_interface name="position">
                   <param name="initial_value">${initial_positions['link5_link6_to_link5']}</param>
-                </state_interface>
-                <state_interface name="velocity"/>
-            </joint>
-            <joint name="AX_12A_04_Revolute-34">
-                <command_interface name="position"/>
-                <state_interface name="position">
-                  <param name="initial_value">${initial_positions['AX_12A_04_Revolute-34']}</param>
                 </state_interface>
                 <state_interface name="velocity"/>
             </joint>

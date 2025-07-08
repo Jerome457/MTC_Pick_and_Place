@@ -16,7 +16,7 @@ find_package(ament_cmake REQUIRED)
 # find_package(moveit_ros_planning_interface REQUIRED)
 # find_package(moveit_task_constructor_core REQUIRED)
 # Gazebo + URDF (if needed elsewhere)
-find_package(gazebo_ros REQUIRED)
+# find_package(gazebo_ros REQUIRED)
 find_package(urdf REQUIRED)
 
 # add_executable(pick_and_place src/pick_and_place.cpp)
@@ -33,7 +33,7 @@ find_package(urdf REQUIRED)
 # )
 
 install(DIRECTORY launch DESTINATION share/${PROJECT_NAME}/)
-install(DIRECTORY meshes urdf DESTINATION share/${PROJECT_NAME}/)
+install(DIRECTORY meshes urdf config DESTINATION share/${PROJECT_NAME}/)
 # install(TARGETS pick_and_place DESTINATION lib/${PROJECT_NAME})
 
 if(BUILD_TESTING)

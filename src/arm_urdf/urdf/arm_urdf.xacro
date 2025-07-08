@@ -287,6 +287,14 @@
             </geometry>
         </collision>
     </link>
+    <link name="grasp_frame">
+    </link>
+
+    <joint name="link6_to_grasp_frame" type="fixed">
+    <parent link="link6"/>
+    <child link="grasp_frame"/>
+    <origin xyz="-0.06 0.1 -0.025" rpy="1.5708 0 -1.5708"/> <!-- adjust based on actual offset -->
+    </joint>
 
     <joint name="base_footprint_joint" type="fixed">
         <parent link="base_footprint" />

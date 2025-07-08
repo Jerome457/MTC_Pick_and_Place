@@ -104,7 +104,7 @@ mtc::Task MTCTaskNode::createTask()
 
   const auto& arm_group_name = "arm";
   const auto& hand_group_name = "hand";
-  const auto& hand_frame = "link6";
+  const auto& hand_frame = "grasp_frame";
 
   // Set task properties
   task.setProperty("group", arm_group_name);
@@ -163,7 +163,7 @@ mtc::Stage* attach_object_stage =
         // Set hand forward direction
         geometry_msgs::msg::Vector3Stamped vec;
         vec.header.frame_id = hand_frame;
-        vec.vector.z = 1.0;
+        vec.vector.x = -0.05;
         stage->setDirection(vec);
         grasp->insert(std::move(stage));
       }
@@ -183,7 +183,7 @@ mtc::Stage* attach_object_stage =
                             Eigen::AngleAxisd(0, Eigen::Vector3d::UnitY()) *
                             Eigen::AngleAxisd(-M_PI / 2, Eigen::Vector3d::UnitZ());
         grasp_frame_transform.linear() = q.matrix();
-        grasp_frame_transform.translation() = Eigen::Vector3d(0.0, 0.2, 0.0);
+        grasp_frame_transform.translation() = Eigen::Vector3d(-0.025, 0.0, 0.0);
         // Compute IK
         auto wrapper =
             std::make_unique<mtc::stages::ComputeIK>("grasp pose IK", std::move(stage));
@@ -197,12 +197,9 @@ mtc::Stage* attach_object_stage =
 
       {
         auto stage =
-            std::make_unique<mtc::stages::ModifyPlanningScene>("allow collision (hand,object)");
-        stage->allowCollisions("object",
-                              task.getRobotModel()
-                                  ->getJointModelGroup(hand_group_name)
-                                  ->getLinkModelNamesWithCollisionGeometry(),
-                              true);
+            std::make_unique<mtc::stages::ModifyPlanningScene>("allow collision (soft_fingers,object)");
+        stage->allowCollisions("object", "Soft_finger_1", true);
+        stage->allowCollisions("object", "Soft_finger_2", true);
         grasp->insert(std::move(stage));
       }
 
@@ -289,11 +286,8 @@ mtc::Stage* attach_object_stage =
       {
         auto stage =
             std::make_unique<mtc::stages::ModifyPlanningScene>("forbid collision (hand,object)");
-        stage->allowCollisions("object",
-                              task.getRobotModel()
-                                  ->getJointModelGroup(hand_group_name)
-                                  ->getLinkModelNamesWithCollisionGeometry(),
-                              false);
+        stage->allowCollisions("object", "Soft_finger_1", false);
+        stage->allowCollisions("object", "Soft_finger_2", false);
         place->insert(std::move(stage));
       }
 
@@ -323,7 +317,7 @@ mtc::Stage* attach_object_stage =
     {
       auto stage = std::make_unique<mtc::stages::MoveTo>("return home", sampling_planner);
       stage->properties().configureInitFrom(mtc::Stage::PARENT, { "group" });
-      stage->setGoal("zero");
+      stage->setGoal("ready");
       task.add(std::move(stage));
     }
   return task;

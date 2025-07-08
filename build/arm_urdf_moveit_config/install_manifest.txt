@@ -26,7 +26,6 @@
 /home/jerome/arm_new/install/arm_urdf_moveit_config/share/arm_urdf_moveit_config/config/arm_urdf.srdf
 /home/jerome/arm_new/install/arm_urdf_moveit_config/share/arm_urdf_moveit_config/config/moveit_controllers.yaml
 /home/jerome/arm_new/install/arm_urdf_moveit_config/share/arm_urdf_moveit_config/config/mtc.rviz
-/home/jerome/arm_new/install/arm_urdf_moveit_config/share/arm_urdf_moveit_config/config/ompl_planning.yaml
 /home/jerome/arm_new/install/arm_urdf_moveit_config/share/arm_urdf_moveit_config/config/arm_urdf.urdf.xacro
 /home/jerome/arm_new/install/arm_urdf_moveit_config/share/arm_urdf_moveit_config/config/moveit.rviz
 /home/jerome/arm_new/install/arm_urdf_moveit_config/share/arm_urdf_moveit_config/config/pilz_cartesian_limits.yaml

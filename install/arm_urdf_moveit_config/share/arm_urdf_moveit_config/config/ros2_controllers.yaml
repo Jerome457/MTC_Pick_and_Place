@@ -3,19 +3,21 @@ controller_manager:
   ros__parameters:
     update_rate: 100  # Hz
 
-    arm_controller:
-      type: joint_trajectory_controller/JointTrajectoryController
-      action_server_name: follow_joint_trajectory
-
-
     hand_controller:
       type: position_controllers/GripperActionController
-      action_server_name: gripper_cmd
+
+
+    arm_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
 
 
     joint_state_broadcaster:
       type: joint_state_broadcaster/JointStateBroadcaster
 
+hand_controller:
+  ros__parameters:
+    joint: AX_12A_04_Revolute-34
+    action_ns: gripper_cmd
 arm_controller:
   ros__parameters:
     joints:
@@ -25,11 +27,10 @@ arm_controller:
       - link3_link4_to_link3
       - link4_link5_to_link4
       - link5_link6_to_link5
+    action_ns: follow_joint_trajectory
+
     command_interfaces:
       - position
     state_interfaces:
       - position
       - velocity
-hand_controller:
-  ros__parameters:
-    joint: AX_12A_04_Revolute-34

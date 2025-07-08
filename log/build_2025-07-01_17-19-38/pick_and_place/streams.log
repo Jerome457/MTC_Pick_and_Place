@@ -1,0 +1,30 @@
+[0.011s] Invoking command in '/home/jerome/arm_new/build/pick_and_place': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/jerome/ws_moveit2/install/moveit_configs_utils:/home/jerome/ws_moveit2/install/launch_param_builder:/opt/ros/humble /usr/bin/cmake --build /home/jerome/arm_new/build/pick_and_place -- -j16 -l16
+[0.130s] [ 25%] [32mBuilding CXX object CMakeFiles/mtc_tutorial.dir/src/mtc.cpp.o[0m
+[0.132s] [ 75%] Built target pick_and_place
+[6.541s] [100%] [32m[1mLinking CXX executable mtc_tutorial[0m
+[6.911s] [100%] Built target mtc_tutorial
+[6.920s] Invoked command in '/home/jerome/arm_new/build/pick_and_place' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/jerome/ws_moveit2/install/moveit_configs_utils:/home/jerome/ws_moveit2/install/launch_param_builder:/opt/ros/humble /usr/bin/cmake --build /home/jerome/arm_new/build/pick_and_place -- -j16 -l16
+[6.921s] Invoking command in '/home/jerome/arm_new/build/pick_and_place': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/jerome/ws_moveit2/install/moveit_configs_utils:/home/jerome/ws_moveit2/install/launch_param_builder:/opt/ros/humble /usr/bin/cmake --install /home/jerome/arm_new/build/pick_and_place
+[6.930s] -- Install configuration: ""
+[6.930s] -- Installing: /home/jerome/arm_new/install/pick_and_place/lib/pick_and_place/mtc_tutorial
+[6.932s] -- Set runtime path of "/home/jerome/arm_new/install/pick_and_place/lib/pick_and_place/mtc_tutorial" to ""
+[6.932s] -- Up-to-date: /home/jerome/arm_new/install/pick_and_place/share/pick_and_place//launch
+[6.932s] -- Up-to-date: /home/jerome/arm_new/install/pick_and_place/share/pick_and_place//launch/pick_new.launch.py
+[6.932s] -- Up-to-date: /home/jerome/arm_new/install/pick_and_place/share/pick_and_place//launch/pick_and_place.launch.py
+[6.933s] -- Up-to-date: /home/jerome/arm_new/install/pick_and_place/lib/pick_and_place/pick_and_place
+[6.933s] -- Up-to-date: /home/jerome/arm_new/install/pick_and_place/share/ament_index/resource_index/package_run_dependencies/pick_and_place
+[6.933s] -- Up-to-date: /home/jerome/arm_new/install/pick_and_place/share/ament_index/resource_index/parent_prefix_path/pick_and_place
+[6.933s] -- Up-to-date: /home/jerome/arm_new/install/pick_and_place/share/pick_and_place/environment/ament_prefix_path.sh
+[6.933s] -- Up-to-date: /home/jerome/arm_new/install/pick_and_place/share/pick_and_place/environment/ament_prefix_path.dsv
+[6.933s] -- Up-to-date: /home/jerome/arm_new/install/pick_and_place/share/pick_and_place/environment/path.sh
+[6.933s] -- Up-to-date: /home/jerome/arm_new/install/pick_and_place/share/pick_and_place/environment/path.dsv
+[6.933s] -- Up-to-date: /home/jerome/arm_new/install/pick_and_place/share/pick_and_place/local_setup.bash
+[6.933s] -- Up-to-date: /home/jerome/arm_new/install/pick_and_place/share/pick_and_place/local_setup.sh
+[6.933s] -- Up-to-date: /home/jerome/arm_new/install/pick_and_place/share/pick_and_place/local_setup.zsh
+[6.933s] -- Up-to-date: /home/jerome/arm_new/install/pick_and_place/share/pick_and_place/local_setup.dsv
+[6.933s] -- Installing: /home/jerome/arm_new/install/pick_and_place/share/pick_and_place/package.dsv
+[6.934s] -- Up-to-date: /home/jerome/arm_new/install/pick_and_place/share/ament_index/resource_index/packages/pick_and_place
+[6.934s] -- Up-to-date: /home/jerome/arm_new/install/pick_and_place/share/pick_and_place/cmake/pick_and_placeConfig.cmake
+[6.934s] -- Up-to-date: /home/jerome/arm_new/install/pick_and_place/share/pick_and_place/cmake/pick_and_placeConfig-version.cmake
+[6.934s] -- Up-to-date: /home/jerome/arm_new/install/pick_and_place/share/pick_and_place/package.xml
+[6.936s] Invoked command in '/home/jerome/arm_new/build/pick_and_place' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/jerome/ws_moveit2/install/moveit_configs_utils:/home/jerome/ws_moveit2/install/launch_param_builder:/opt/ros/humble /usr/bin/cmake --install /home/jerome/arm_new/build/pick_and_place

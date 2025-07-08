@@ -50,6 +50,7 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/arm_urdf/" TYPE DIRECTORY FILES
     "/home/jerome/arm_new/src/arm_urdf/meshes"
     "/home/jerome/arm_new/src/arm_urdf/urdf"
+    "/home/jerome/arm_new/src/arm_urdf/config"
     )
 endif()
 
