@@ -1,0 +1,28 @@
+[0.010s] Invoking command in '/home/jerome/arm_new/build/pick_and_place': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/jerome/cognipilot/cranium/install/b3rb_ros_aim_india:/home/jerome/ws_moveit2/install/moveit_configs_utils:/home/jerome/ws_moveit2/install/launch_param_builder:/opt/ros/humble /usr/bin/cmake --build /home/jerome/arm_new/build/pick_and_place -- -j16 -l16
+[0.071s] [35m[1mConsolidate compiler generated dependencies of target mtc_tutorial[0m
+[0.087s] [ 50%] Built target pick_and_place
+[0.094s] [100%] Built target mtc_tutorial
+[0.103s] Invoked command in '/home/jerome/arm_new/build/pick_and_place' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/jerome/cognipilot/cranium/install/b3rb_ros_aim_india:/home/jerome/ws_moveit2/install/moveit_configs_utils:/home/jerome/ws_moveit2/install/launch_param_builder:/opt/ros/humble /usr/bin/cmake --build /home/jerome/arm_new/build/pick_and_place -- -j16 -l16
+[0.104s] Invoking command in '/home/jerome/arm_new/build/pick_and_place': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/jerome/cognipilot/cranium/install/b3rb_ros_aim_india:/home/jerome/ws_moveit2/install/moveit_configs_utils:/home/jerome/ws_moveit2/install/launch_param_builder:/opt/ros/humble /usr/bin/cmake --install /home/jerome/arm_new/build/pick_and_place
+[0.112s] -- Install configuration: ""
+[0.112s] -- Up-to-date: /home/jerome/arm_new/install/pick_and_place/lib/pick_and_place/mtc_tutorial
+[0.112s] -- Up-to-date: /home/jerome/arm_new/install/pick_and_place/share/pick_and_place//launch
+[0.112s] -- Up-to-date: /home/jerome/arm_new/install/pick_and_place/share/pick_and_place//launch/pick_new.launch.py
+[0.112s] -- Up-to-date: /home/jerome/arm_new/install/pick_and_place/share/pick_and_place//launch/pick_and_place.launch.py
+[0.112s] -- Up-to-date: /home/jerome/arm_new/install/pick_and_place/lib/pick_and_place/pick_and_place
+[0.112s] -- Up-to-date: /home/jerome/arm_new/install/pick_and_place/share/ament_index/resource_index/package_run_dependencies/pick_and_place
+[0.112s] -- Up-to-date: /home/jerome/arm_new/install/pick_and_place/share/ament_index/resource_index/parent_prefix_path/pick_and_place
+[0.112s] -- Up-to-date: /home/jerome/arm_new/install/pick_and_place/share/pick_and_place/environment/ament_prefix_path.sh
+[0.112s] -- Up-to-date: /home/jerome/arm_new/install/pick_and_place/share/pick_and_place/environment/ament_prefix_path.dsv
+[0.112s] -- Up-to-date: /home/jerome/arm_new/install/pick_and_place/share/pick_and_place/environment/path.sh
+[0.112s] -- Up-to-date: /home/jerome/arm_new/install/pick_and_place/share/pick_and_place/environment/path.dsv
+[0.112s] -- Up-to-date: /home/jerome/arm_new/install/pick_and_place/share/pick_and_place/local_setup.bash
+[0.112s] -- Up-to-date: /home/jerome/arm_new/install/pick_and_place/share/pick_and_place/local_setup.sh
+[0.112s] -- Up-to-date: /home/jerome/arm_new/install/pick_and_place/share/pick_and_place/local_setup.zsh
+[0.112s] -- Up-to-date: /home/jerome/arm_new/install/pick_and_place/share/pick_and_place/local_setup.dsv
+[0.112s] -- Installing: /home/jerome/arm_new/install/pick_and_place/share/pick_and_place/package.dsv
+[0.112s] -- Up-to-date: /home/jerome/arm_new/install/pick_and_place/share/ament_index/resource_index/packages/pick_and_place
+[0.112s] -- Up-to-date: /home/jerome/arm_new/install/pick_and_place/share/pick_and_place/cmake/pick_and_placeConfig.cmake
+[0.112s] -- Up-to-date: /home/jerome/arm_new/install/pick_and_place/share/pick_and_place/cmake/pick_and_placeConfig-version.cmake
+[0.112s] -- Up-to-date: /home/jerome/arm_new/install/pick_and_place/share/pick_and_place/package.xml
+[0.114s] Invoked command in '/home/jerome/arm_new/build/pick_and_place' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/jerome/cognipilot/cranium/install/b3rb_ros_aim_india:/home/jerome/ws_moveit2/install/moveit_configs_utils:/home/jerome/ws_moveit2/install/launch_param_builder:/opt/ros/humble /usr/bin/cmake --install /home/jerome/arm_new/build/pick_and_place

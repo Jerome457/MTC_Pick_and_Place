@@ -53,16 +53,36 @@ void MTCTaskNode::setupPlanningScene()
   object.header.frame_id = "world";
   object.primitives.resize(1);
   object.primitives[0].type = shape_msgs::msg::SolidPrimitive::CYLINDER;
-  object.primitives[0].dimensions = { 0.1, 0.02 };
+  object.primitives[0].dimensions = {0.1, 0.02};  // height, radius
 
-  geometry_msgs::msg::Pose pose;
-  pose.position.x = 0.4;
-  pose.position.y = 0.0;
-  pose.orientation.w = 1.0;
-  object.pose = pose;
+  geometry_msgs::msg::Pose object_pose;
+  object_pose.position.x = 0.4;
+  object_pose.position.y = 0.0;
+  object_pose.position.z = 0.05;  // Make sure it's above ground
+  object_pose.orientation.w = 1.0;  // valid quaternion
+  object.primitive_poses.push_back(object_pose);
+  object.operation = object.ADD;
 
+  // // ----- Add Ground Plane -----
+  // moveit_msgs::msg::CollisionObject ground;
+  // ground.id = "ground_plane";
+  // ground.header.frame_id = "base_link";  // or your planning frame
+
+  // shape_msgs::msg::SolidPrimitive ground_shape;
+  // ground_shape.type = shape_msgs::msg::SolidPrimitive::BOX;
+  // ground_shape.dimensions = {5.0, 5.0, 0.01};  // large thin box
+
+  // geometry_msgs::msg::Pose ground_pose;
+  // ground_pose.position.z = -0.05;  // so top of box is at z=0
+  // ground_pose.orientation.w = 1.0;
+
+  // ground.primitives.push_back(ground_shape);
+  // ground.primitive_poses.push_back(ground_pose);
+  // ground.operation = ground.ADD;
+
+  // ----- Apply to planning scene -----
   moveit::planning_interface::PlanningSceneInterface psi;
-  psi.applyCollisionObject(object);
+  psi.applyCollisionObjects({object});
 }
 
 void MTCTaskNode::doTask()
@@ -180,7 +200,7 @@ mtc::Stage* attach_object_stage =
 
         Eigen::Isometry3d grasp_frame_transform;
         Eigen::Quaterniond q = Eigen::AngleAxisd(M_PI / 2, Eigen::Vector3d::UnitX()) *
-                            Eigen::AngleAxisd(0, Eigen::Vector3d::UnitY()) *
+                            Eigen::AngleAxisd(M_PI/10, Eigen::Vector3d::UnitY()) *
                             Eigen::AngleAxisd(-M_PI / 2, Eigen::Vector3d::UnitZ());
         grasp_frame_transform.linear() = q.matrix();
         grasp_frame_transform.translation() = Eigen::Vector3d(-0.025, 0.0, 0.0);
@@ -263,6 +283,7 @@ mtc::Stage* attach_object_stage =
         target_pose_msg.header.frame_id = "base_footprint";
         target_pose_msg.pose.position.y = 0.2;
         target_pose_msg.pose.position.x = -0.4;
+        target_pose_msg.pose.position.z=0.05;
         target_pose_msg.pose.orientation.w = 1.0;
         stage->setPose(target_pose_msg);
         stage->setMonitoredStage(attach_object_stage);  // Hook into attach_object_stage

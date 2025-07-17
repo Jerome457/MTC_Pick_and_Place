@@ -1,0 +1,13 @@
+[0.010s] Invoking command in '/home/jerome/arm_new/build/pick_and_place': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/jerome/cognipilot/cranium/install/b3rb_ros_aim_india:/home/jerome/ws_moveit2/install/moveit_configs_utils:/home/jerome/ws_moveit2/install/launch_param_builder:/opt/ros/humble /usr/bin/cmake --build /home/jerome/arm_new/build/pick_and_place -- -j16 -l16
+[0.065s] [35m[1mConsolidate compiler generated dependencies of target mtc_tutorial[0m
+[0.078s] [ 50%] Built target pick_and_place
+[0.088s] [ 75%] [32mBuilding CXX object CMakeFiles/mtc_tutorial.dir/src/mtc.cpp.o[0m
+[3.331s] [01m[K/home/jerome/arm_new/src/pick_and_place/src/mtc.cpp:[m[K In member function ‘[01m[Kmoveit::task_constructor::Task MTCTaskNode::createTask()[m[K’:
+[3.331s] [01m[K/home/jerome/arm_new/src/pick_and_place/src/mtc.cpp:144:22:[m[K [01;31m[Kerror: [m[K‘[01m[Kstage[m[K’ was not declared in this scope; did you mean ‘[01m[Kstage2[m[K’?
+[3.331s]   144 |   task.add(std::move([01;31m[Kstage[m[K));
+[3.331s]       |                      [01;31m[K^~~~~[m[K
+[3.331s]       |                      [32m[Kstage2[m[K
+[5.685s] gmake[2]: *** [CMakeFiles/mtc_tutorial.dir/build.make:76: CMakeFiles/mtc_tutorial.dir/src/mtc.cpp.o] Error 1
+[5.686s] gmake[1]: *** [CMakeFiles/Makefile2:165: CMakeFiles/mtc_tutorial.dir/all] Error 2
+[5.686s] gmake: *** [Makefile:146: all] Error 2
+[5.688s] Invoked command in '/home/jerome/arm_new/build/pick_and_place' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/jerome/cognipilot/cranium/install/b3rb_ros_aim_india:/home/jerome/ws_moveit2/install/moveit_configs_utils:/home/jerome/ws_moveit2/install/launch_param_builder:/opt/ros/humble /usr/bin/cmake --build /home/jerome/arm_new/build/pick_and_place -- -j16 -l16

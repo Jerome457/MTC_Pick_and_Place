@@ -1,0 +1,8 @@
+[01m[K/home/jerome/arm_new/src/pick_and_place/src/mtc.cpp:[m[K In member function ‘[01m[Kmoveit::task_constructor::Task MTCTaskNode::createTask()[m[K’:
+[01m[K/home/jerome/arm_new/src/pick_and_place/src/mtc.cpp:144:22:[m[K [01;31m[Kerror: [m[K‘[01m[Kstage[m[K’ was not declared in this scope; did you mean ‘[01m[Kstage2[m[K’?
+  144 |   task.add(std::move([01;31m[Kstage[m[K));
+      |                      [01;31m[K^~~~~[m[K
+      |                      [32m[Kstage2[m[K
+gmake[2]: *** [CMakeFiles/mtc_tutorial.dir/build.make:76: CMakeFiles/mtc_tutorial.dir/src/mtc.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:165: CMakeFiles/mtc_tutorial.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2

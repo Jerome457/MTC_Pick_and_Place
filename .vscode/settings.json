@@ -1,6 +1,8 @@
 {
     "files.associations": {
         "chrono": "cpp",
-        "bitset": "cpp"
-    }
+        "bitset": "cpp",
+        "core": "cpp"
+    },
+    "C_Cpp.errorSquiggles": "disabled"
 }
