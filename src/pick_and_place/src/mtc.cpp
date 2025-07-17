@@ -48,41 +48,70 @@ MTCTaskNode::MTCTaskNode(const rclcpp::NodeOptions& options)
 
 void MTCTaskNode::setupPlanningScene()
 {
-  moveit_msgs::msg::CollisionObject object;
-  object.id = "object";
-  object.header.frame_id = "world";
-  object.primitives.resize(1);
-  object.primitives[0].type = shape_msgs::msg::SolidPrimitive::CYLINDER;
-  object.primitives[0].dimensions = {0.1, 0.02};  // height, radius
+// ----- Add Object -----
+moveit_msgs::msg::CollisionObject object;
+object.id = "object";
+object.header.frame_id = "world";
+object.primitives.resize(1);
+object.primitives[0].type = shape_msgs::msg::SolidPrimitive::CYLINDER;
+object.primitives[0].dimensions = {0.1, 0.02};  // height, radius
 
-  geometry_msgs::msg::Pose object_pose;
-  object_pose.position.x = 0.4;
-  object_pose.position.y = 0.0;
-  object_pose.position.z = 0.05;  // Make sure it's above ground
-  object_pose.orientation.w = 1.0;  // valid quaternion
-  object.primitive_poses.push_back(object_pose);
-  object.operation = object.ADD;
+geometry_msgs::msg::Pose object_pose;
+object_pose.position.x = 0.4;
+object_pose.position.y = 0.0;
+object_pose.position.z = 0.05;  // Make sure it's above ground
+object_pose.orientation.w = 1.0;  // valid quaternion
+object.primitive_poses.push_back(object_pose);
+object.operation = object.ADD;
 
-  // // ----- Add Ground Plane -----
-  // moveit_msgs::msg::CollisionObject ground;
-  // ground.id = "ground_plane";
-  // ground.header.frame_id = "base_link";  // or your planning frame
+// ----- Add Ground Plane -----
+moveit_msgs::msg::CollisionObject ground;
+ground.id = "ground_plane";
+ground.header.frame_id = "base_link";  // or your planning frame
 
-  // shape_msgs::msg::SolidPrimitive ground_shape;
-  // ground_shape.type = shape_msgs::msg::SolidPrimitive::BOX;
-  // ground_shape.dimensions = {5.0, 5.0, 0.01};  // large thin box
+shape_msgs::msg::SolidPrimitive ground_shape;
+ground_shape.type = shape_msgs::msg::SolidPrimitive::BOX;
+ground_shape.dimensions = {4.0, 4.0, 0.01};  // large thin box
 
-  // geometry_msgs::msg::Pose ground_pose;
-  // ground_pose.position.z = -0.05;  // so top of box is at z=0
-  // ground_pose.orientation.w = 1.0;
+geometry_msgs::msg::Pose ground_pose;
+ground_pose.position.z = -0.05;  // top of ground at z=0
+ground_pose.orientation.w = 1.0;
 
-  // ground.primitives.push_back(ground_shape);
-  // ground.primitive_poses.push_back(ground_pose);
-  // ground.operation = ground.ADD;
+ground.primitives.push_back(ground_shape);
+ground.primitive_poses.push_back(ground_pose);
+ground.operation = ground.ADD;
 
-  // ----- Apply to planning scene -----
-  moveit::planning_interface::PlanningSceneInterface psi;
-  psi.applyCollisionObjects({object});
+// ----- Set Colors -----
+moveit_msgs::msg::ObjectColor object_color;
+object_color.id = "object";
+object_color.color.r = 0.0;
+object_color.color.g = 1.0;
+object_color.color.b = 0.0;
+object_color.color.a = 1.0;
+
+moveit_msgs::msg::ObjectColor ground_color;
+ground_color.id = "ground_plane";
+ground_color.color.r = 0.0;
+ground_color.color.g = 0.0;
+ground_color.color.b = 1.0;
+ground_color.color.a = 0.0;
+
+// ----- Publish Planning Scene with Color -----
+moveit_msgs::msg::PlanningScene scene_msg;
+scene_msg.is_diff = true;
+scene_msg.world.collision_objects.push_back(object);
+scene_msg.world.collision_objects.push_back(ground);
+scene_msg.object_colors.push_back(object_color);
+scene_msg.object_colors.push_back(ground_color);
+
+// Publisher must be kept alive until message is sent
+auto planning_scene_pub = node_->create_publisher<moveit_msgs::msg::PlanningScene>("/planning_scene", 10);
+rclcpp::Rate rate(10);
+for (int i = 0; i < 5; ++i) {
+  planning_scene_pub->publish(scene_msg);
+  rate.sleep();
+}
+
 }
 
 void MTCTaskNode::doTask()

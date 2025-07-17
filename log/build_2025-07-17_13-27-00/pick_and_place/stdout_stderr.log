@@ -1,0 +1,18 @@
+[35m[1mConsolidate compiler generated dependencies of target mtc_tutorial[0m
+[ 50%] Built target pick_and_place
+[ 75%] [32mBuilding CXX object CMakeFiles/mtc_tutorial.dir/src/mtc.cpp.o[0m
+[01m[K/home/jerome/arm_new/src/pick_and_place/src/mtc.cpp:[m[K In member function ‘[01m[Kvoid MTCTaskNode::setupPlanningScene()[m[K’:
+[01m[K/home/jerome/arm_new/src/pick_and_place/src/mtc.cpp:85:37:[m[K [01;31m[Kerror: [m[K‘[01m[Kground_plane[m[K’ was not declared in this scope; did you mean ‘[01m[Kground_pose[m[K’?
+   85 |   psi.applyCollisionObjects({object,[01;31m[Kground_plane[m[K});
+      |                                     [01;31m[K^~~~~~~~~~~~[m[K
+      |                                     [32m[Kground_pose[m[K
+[01m[K/home/jerome/arm_new/src/pick_and_place/src/mtc.cpp:85:28:[m[K [01;31m[Kerror: [m[Kcannot convert ‘[01m[K<brace-enclosed initializer list>[m[K’ to ‘[01m[Kconst std::vector<moveit_msgs::msg::CollisionObject_<std::allocator<void> >, std::allocator<moveit_msgs::msg::CollisionObject_<std::allocator<void> > > >&[m[K’
+   85 |   [01;31m[Kpsi.applyCollisionObjects({object,ground_plane})[m[K;
+      |   [01;31m[K~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~[m[K
+In file included from [01m[K/home/jerome/arm_new/src/pick_and_place/src/mtc.cpp:3[m[K:
+[01m[K/home/jerome/ws_moveit2/install/moveit_ros_planning_interface/include/moveit/planning_scene_interface/planning_scene_interface.h:114:61:[m[K [01;36m[Knote: [m[K  initializing argument 1 of ‘[01m[Kbool moveit::planning_interface::PlanningSceneInterface::applyCollisionObjects(const std::vector<moveit_msgs::msg::CollisionObject_<std::allocator<void> >, std::allocator<moveit_msgs::msg::CollisionObject_<std::allocator<void> > > >&, const std::vector<moveit_msgs::msg::ObjectColor_<std::allocator<void> >, std::allocator<moveit_msgs::msg::ObjectColor_<std::allocator<void> > > >&)[m[K’
+  114 |       [01;36m[Kconst std::vector<moveit_msgs::msg::CollisionObject>& collision_objects[m[K,
+      |       [01;36m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~[m[K
+gmake[2]: *** [CMakeFiles/mtc_tutorial.dir/build.make:76: CMakeFiles/mtc_tutorial.dir/src/mtc.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:165: CMakeFiles/mtc_tutorial.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2
