@@ -57,7 +57,7 @@ object.primitives[0].type = shape_msgs::msg::SolidPrimitive::CYLINDER;
 object.primitives[0].dimensions = {0.1, 0.02};  // height, radius
 
 geometry_msgs::msg::Pose object_pose;
-object_pose.position.x = 0.4;
+object_pose.position.x = 0.7;
 object_pose.position.y = 0.0;
 object_pose.position.z = 0.05;  // Make sure it's above ground
 object_pose.orientation.w = 1.0;  // valid quaternion
