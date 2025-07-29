@@ -1,0 +1,52 @@
+[0.013s] Invoking command in '/home/jerome/arm_new/build/pick_and_place': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/jerome/ws_moveit2/install/moveit_configs_utils:/home/jerome/ws_moveit2/install/launch_param_builder:/opt/ros/humble /usr/bin/cmake --build /home/jerome/arm_new/build/pick_and_place -- -j16 -l16
+[0.050s] -- Found ament_cmake: 1.3.12 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.140s] -- Found moveit_ros_planning_interface: 2.5.9 (/home/jerome/ws_moveit2/install/moveit_ros_planning_interface/share/moveit_ros_planning_interface/cmake)
+[0.149s] -- Found Boost: /usr/lib/x86_64-linux-gnu/cmake/Boost-1.74.0/BoostConfig.cmake (found version "1.74.0") found components: date_time filesystem program_options system thread 
+[0.167s] -- Found rosidl_generator_c: 3.1.7 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+[0.169s] -- Found rosidl_adapter: 3.1.7 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[0.172s] -- Found rosidl_generator_cpp: 3.1.7 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+[0.181s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.189s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.306s] -- Found Boost: /usr/lib/x86_64-linux-gnu/cmake/Boost-1.74.0/BoostConfig.cmake (found version "1.74.0") found components: chrono date_time filesystem iostreams program_options regex serialization system thread 
+[0.327s] -- Found parameter_traits: 0.5.0 (/opt/ros/humble/share/parameter_traits/cmake)
+[0.345s] -- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+[0.347s] -- Found rmw_cyclonedds_cpp: 1.3.4 (/opt/ros/humble/share/rmw_cyclonedds_cpp/cmake)
+[0.359s] -- Using RMW implementation 'rmw_cyclonedds_cpp' as default
+[0.387s] -- Found rclcpp_lifecycle: 16.0.14 (/opt/ros/humble/share/rclcpp_lifecycle/cmake)
+[0.401s] -- Found Boost: /usr/lib/x86_64-linux-gnu/cmake/Boost-1.74.0/BoostConfig.cmake (found version "1.74.0") found components: filesystem 
+[0.430s] -- library: /usr/lib/x86_64-linux-gnu/libcurl.so
+[0.447s] -- Ensuring Eigen3 include directory is part of orocos-kdl CMake target
+[0.523s] -- Found Boost: /usr/lib/x86_64-linux-gnu/cmake/Boost-1.74.0/BoostConfig.cmake (found version "1.74.0") found components: system filesystem date_time program_options thread chrono 
+[0.543s] -- Found Boost: /usr/lib/x86_64-linux-gnu/cmake/Boost-1.74.0/BoostConfig.cmake (found version "1.74.0") found components: thread system filesystem regex date_time program_options 
+[0.564s] -- Found Boost: /usr/lib/x86_64-linux-gnu/cmake/Boost-1.74.0/BoostConfig.cmake (found version "1.74.0") found components: system filesystem date_time program_options thread 
+[0.586s] -- Found gazebo_msgs: 3.9.0 (/opt/ros/humble/share/gazebo_msgs/cmake)
+[0.608s] [33mCMake Warning at CMakeLists.txt:22 (find_package):
+[0.608s]   By not providing "Findlinkattacher_msgs.cmake" in CMAKE_MODULE_PATH this
+[0.608s]   project has asked CMake to find a package configuration file provided by
+[0.608s]   "linkattacher_msgs", but CMake did not find one.
+[0.608s] 
+[0.608s]   Could not find a package configuration file provided by "linkattacher_msgs"
+[0.608s]   with any of the following names:
+[0.608s] 
+[0.608s]     linkattacher_msgsConfig.cmake
+[0.608s]     linkattacher_msgs-config.cmake
+[0.608s] 
+[0.608s]   Add the installation prefix of "linkattacher_msgs" to CMAKE_PREFIX_PATH or
+[0.608s]   set "linkattacher_msgs_DIR" to a directory containing one of the above
+[0.608s]   files.  If "linkattacher_msgs" provides a separate development package or
+[0.608s]   SDK, be sure it has been installed.
+[0.608s] 
+[0.608s] [0m
+[0.608s] -- Found moveit_task_constructor_core: 0.1.3 (/home/jerome/ws_moveit2/install/moveit_task_constructor_core/share/moveit_task_constructor_core/cmake)
+[0.638s] -- Found ament_lint_auto: 0.12.14 (/opt/ros/humble/share/ament_lint_auto/cmake)
+[0.691s] [31mCMake Error at /opt/ros/humble/share/ament_cmake_target_dependencies/cmake/ament_target_dependencies.cmake:77 (message):
+[0.691s]   ament_target_dependencies() the passed package name 'linkattacher_msgs' was
+[0.691s]   not found before
+[0.691s] Call Stack (most recent call first):
+[0.691s]   CMakeLists.txt:46 (ament_target_dependencies)
+[0.691s] 
+[0.691s] [0m
+[0.691s] -- Configuring incomplete, errors occurred!
+[0.691s] See also "/home/jerome/arm_new/build/pick_and_place/CMakeFiles/CMakeOutput.log".
+[0.698s] gmake: *** [Makefile:308: cmake_check_build_system] Error 1
+[0.700s] Invoked command in '/home/jerome/arm_new/build/pick_and_place' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/jerome/ws_moveit2/install/moveit_configs_utils:/home/jerome/ws_moveit2/install/launch_param_builder:/opt/ros/humble /usr/bin/cmake --build /home/jerome/arm_new/build/pick_and_place -- -j16 -l16

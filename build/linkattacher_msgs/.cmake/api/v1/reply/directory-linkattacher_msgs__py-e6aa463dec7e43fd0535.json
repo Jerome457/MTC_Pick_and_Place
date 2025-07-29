@@ -1,0 +1,14 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : [],
+		"nodes" : []
+	},
+	"installers" : [],
+	"paths" : 
+	{
+		"build" : "linkattacher_msgs__py",
+		"source" : "/home/jerome/arm_new/build/linkattacher_msgs/linkattacher_msgs__py"
+	}
+}

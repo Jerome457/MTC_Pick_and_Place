@@ -211,6 +211,19 @@ pick_and_place/fast:
 .PHONY : pick_and_place/fast
 
 #=============================================================================
+# Target rules for targets named gripper_monitor
+
+# Build rule for target.
+gripper_monitor: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gripper_monitor
+.PHONY : gripper_monitor
+
+# fast build rule for target.
+gripper_monitor/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gripper_monitor.dir/build.make CMakeFiles/gripper_monitor.dir/build
+.PHONY : gripper_monitor/fast
+
+#=============================================================================
 # Target rules for targets named mtc_tutorial
 
 # Build rule for target.
@@ -222,6 +235,30 @@ mtc_tutorial: cmake_check_build_system
 mtc_tutorial/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/mtc_tutorial.dir/build.make CMakeFiles/mtc_tutorial.dir/build
 .PHONY : mtc_tutorial/fast
+
+src/gazebo_link_attacher.o: src/gazebo_link_attacher.cpp.o
+.PHONY : src/gazebo_link_attacher.o
+
+# target to build an object file
+src/gazebo_link_attacher.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gripper_monitor.dir/build.make CMakeFiles/gripper_monitor.dir/src/gazebo_link_attacher.cpp.o
+.PHONY : src/gazebo_link_attacher.cpp.o
+
+src/gazebo_link_attacher.i: src/gazebo_link_attacher.cpp.i
+.PHONY : src/gazebo_link_attacher.i
+
+# target to preprocess a source file
+src/gazebo_link_attacher.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gripper_monitor.dir/build.make CMakeFiles/gripper_monitor.dir/src/gazebo_link_attacher.cpp.i
+.PHONY : src/gazebo_link_attacher.cpp.i
+
+src/gazebo_link_attacher.s: src/gazebo_link_attacher.cpp.s
+.PHONY : src/gazebo_link_attacher.s
+
+# target to generate assembly for a file
+src/gazebo_link_attacher.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gripper_monitor.dir/build.make CMakeFiles/gripper_monitor.dir/src/gazebo_link_attacher.cpp.s
+.PHONY : src/gazebo_link_attacher.cpp.s
 
 src/mtc.o: src/mtc.cpp.o
 .PHONY : src/mtc.o
@@ -286,8 +323,12 @@ help:
 	@echo "... test"
 	@echo "... pick_and_place_uninstall"
 	@echo "... uninstall"
+	@echo "... gripper_monitor"
 	@echo "... mtc_tutorial"
 	@echo "... pick_and_place"
+	@echo "... src/gazebo_link_attacher.o"
+	@echo "... src/gazebo_link_attacher.i"
+	@echo "... src/gazebo_link_attacher.s"
 	@echo "... src/mtc.o"
 	@echo "... src/mtc.i"
 	@echo "... src/mtc.s"

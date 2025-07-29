@@ -4,6 +4,8 @@
 #include <moveit/task_constructor/task.h>
 #include <moveit/task_constructor/solvers.h>
 #include <moveit/task_constructor/stages.h>
+#include <linkattacher_msgs/srv/attach_link.hpp>
+#include <linkattacher_msgs/srv/detach_link.hpp>
 #if __has_include(<tf2_geometry_msgs/tf2_geometry_msgs.hpp>)
 #include <tf2_geometry_msgs/tf2_geometry_msgs.hpp>
 #else
@@ -74,7 +76,7 @@ ground_shape.type = shape_msgs::msg::SolidPrimitive::BOX;
 ground_shape.dimensions = {4.0, 4.0, 0.01};  // large thin box
 
 geometry_msgs::msg::Pose ground_pose;
-ground_pose.position.z = -0.05;  // top of ground at z=0
+ground_pose.position.z = -0.0225;  // top of ground at z=0
 ground_pose.orientation.w = 1.0;
 
 ground.primitives.push_back(ground_shape);
@@ -253,6 +255,14 @@ mtc::Stage* attach_object_stage =
       }
 
       {
+        auto stage =
+            std::make_unique<mtc::stages::ModifyPlanningScene>("allow collision (soft_fingers,object)");
+        stage->allowCollisions("object", "Soft_finger_1", true);
+        stage->allowCollisions("object", "Soft_finger_2", true);
+        grasp->insert(std::move(stage));
+      }
+
+      {
         auto stage = std::make_unique<mtc::stages::MoveTo>("close hand", interpolation_planner);
         stage->setGroup(hand_group_name);
         stage->setGoal("close");
@@ -357,7 +367,7 @@ mtc::Stage* attach_object_stage =
         // Set retreat direction
         geometry_msgs::msg::Vector3Stamped vec;
         vec.header.frame_id = "world";
-        vec.vector.x = 0.1;
+        vec.vector.x = 0.05;
         stage->setDirection(vec);
         place->insert(std::move(stage));
       }

@@ -54,10 +54,30 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
      NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/pick_and_place/mtc_tutorial")
     file(RPATH_CHANGE
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/pick_and_place/mtc_tutorial"
-         OLD_RPATH "/home/jerome/ws_moveit2/install/moveit_task_constructor_core/lib:/home/jerome/ws_moveit2/install/rviz_marker_tools/lib:/home/jerome/ws_moveit2/install/moveit_ros_planning_interface/lib:/home/jerome/ws_moveit2/install/moveit_ros_move_group/lib:/opt/ros/humble/lib:/home/jerome/ws_moveit2/install/moveit_ros_warehouse/lib:/home/jerome/ws_moveit2/install/moveit_ros_planning/lib:/home/jerome/ws_moveit2/install/moveit_ros_occupancy_map_monitor/lib:/home/jerome/ws_moveit2/install/moveit_core/lib:/home/jerome/ws_moveit2/install/srdfdom/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/home/jerome/ws_moveit2/install/moveit_task_constructor_msgs/lib:"
+         OLD_RPATH "/home/jerome/ws_moveit2/install/moveit_task_constructor_core/lib:/home/jerome/arm_new/install/linkattacher_msgs/lib:/home/jerome/ws_moveit2/install/rviz_marker_tools/lib:/home/jerome/ws_moveit2/install/moveit_ros_planning_interface/lib:/home/jerome/ws_moveit2/install/moveit_ros_move_group/lib:/opt/ros/humble/lib:/home/jerome/ws_moveit2/install/moveit_ros_warehouse/lib:/home/jerome/ws_moveit2/install/moveit_ros_planning/lib:/home/jerome/ws_moveit2/install/moveit_ros_occupancy_map_monitor/lib:/home/jerome/ws_moveit2/install/moveit_core/lib:/home/jerome/ws_moveit2/install/srdfdom/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/home/jerome/ws_moveit2/install/moveit_task_constructor_msgs/lib:"
          NEW_RPATH "")
     if(CMAKE_INSTALL_DO_STRIP)
       execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/pick_and_place/mtc_tutorial")
+    endif()
+  endif()
+endif()
+
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/pick_and_place/gripper_monitor" AND
+     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/pick_and_place/gripper_monitor")
+    file(RPATH_CHECK
+         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/pick_and_place/gripper_monitor"
+         RPATH "")
+  endif()
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pick_and_place" TYPE EXECUTABLE FILES "/home/jerome/arm_new/build/pick_and_place/gripper_monitor")
+  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/pick_and_place/gripper_monitor" AND
+     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/pick_and_place/gripper_monitor")
+    file(RPATH_CHANGE
+         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/pick_and_place/gripper_monitor"
+         OLD_RPATH "/opt/ros/humble/lib:/home/jerome/arm_new/install/linkattacher_msgs/lib:"
+         NEW_RPATH "")
+    if(CMAKE_INSTALL_DO_STRIP)
+      execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/pick_and_place/gripper_monitor")
     endif()
   endif()
 endif()

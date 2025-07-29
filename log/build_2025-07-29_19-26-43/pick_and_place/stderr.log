@@ -1,0 +1,25 @@
+[33mCMake Warning at CMakeLists.txt:22 (find_package):
+  By not providing "Findlinkattacher_msgs.cmake" in CMAKE_MODULE_PATH this
+  project has asked CMake to find a package configuration file provided by
+  "linkattacher_msgs", but CMake did not find one.
+
+  Could not find a package configuration file provided by "linkattacher_msgs"
+  with any of the following names:
+
+    linkattacher_msgsConfig.cmake
+    linkattacher_msgs-config.cmake
+
+  Add the installation prefix of "linkattacher_msgs" to CMAKE_PREFIX_PATH or
+  set "linkattacher_msgs_DIR" to a directory containing one of the above
+  files.  If "linkattacher_msgs" provides a separate development package or
+  SDK, be sure it has been installed.
+
+[0m
+[31mCMake Error at /opt/ros/humble/share/ament_cmake_target_dependencies/cmake/ament_target_dependencies.cmake:77 (message):
+  ament_target_dependencies() the passed package name 'linkattacher_msgs' was
+  not found before
+Call Stack (most recent call first):
+  CMakeLists.txt:46 (ament_target_dependencies)
+
+[0m
+gmake: *** [Makefile:308: cmake_check_build_system] Error 1

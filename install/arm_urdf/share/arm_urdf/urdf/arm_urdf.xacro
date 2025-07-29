@@ -1,6 +1,13 @@
 <?xml version='1.0' encoding='utf-8'?>
 <robot name="arm_urdf" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
+
+    <link name = "world"/>
+    <joint name="base_to_world" type="fixed">
+        <parent link="world" />
+        <child link="base_footprint" />
+    </joint>
+
     <link name="base_footprint" />
     <link name="base_link">
         <inertial>
@@ -43,7 +50,7 @@
         <!-- Motor geometry -->
 
         <visual>
-            <origin xyz="0 0.05 0.02" rpy="1.57 0 0" />
+            <origin xyz="0 0.05 0.04" rpy="1.57 0 0" />
             <geometry>
             <cylinder radius="0.02" length="0.1"/>
             </geometry>
@@ -53,7 +60,7 @@
         </visual>
 
         <collision>
-            <origin xyz="0 0.05 0.02" rpy="0 0 0"/>
+            <origin xyz="0 0.05 0.04" rpy="0 0 0"/>
             <geometry>
             <cylinder radius="0.02" length="0.1"/>
             </geometry>
@@ -372,7 +379,7 @@
         <parent link="link6" />
         <child link="Gear_Flange_Driven" />
         <axis xyz="0.091609 0.2724359999999999 0.957803" />
-        <mimic joint="AX_12A_04_Revolute-34" multiplier="1.0" offset="0"/>
+        <!-- <mimic joint="AX_12A_04_Revolute-34" multiplier="1.0" offset="0"/> -->
     </joint>
     <joint name="Gear_Flange_Driven_Rigid-25" type="fixed">
         <origin xyz="0.003509530000000005 -0.0195859999999999 0.02089618999999999" rpy="1.232595164407831e-32 -7.703719777548947e-34 1.3877787807814463e-17" />

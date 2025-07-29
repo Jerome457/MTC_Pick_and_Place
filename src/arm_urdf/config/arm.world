@@ -1,0 +1,1007 @@
+<sdf version='1.7'>
+  <world name='default'>
+    <plugin name="gazebo_link_attacher" filename="libgazebo_link_attacher.so"/>
+    <light name='sun' type='directional'>
+      <cast_shadows>1</cast_shadows>
+      <pose>0 0 10 0 -0 0</pose>
+      <diffuse>0.8 0.8 0.8 1</diffuse>
+      <specular>0.2 0.2 0.2 1</specular>
+      <attenuation>
+        <range>1000</range>
+        <constant>0.9</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+      <direction>-0.5 0.1 -0.9</direction>
+      <spot>
+        <inner_angle>0</inner_angle>
+        <outer_angle>0</outer_angle>
+        <falloff>0</falloff>
+      </spot>
+    </light>
+    <model name='ground_plane'>
+      <static>1</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+          <surface>
+            <contact>
+              <collide_bitmask>65535</collide_bitmask>
+              <ode/>
+            </contact>
+            <friction>
+              <ode>
+                <mu>100</mu>
+                <mu2>50</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='visual'>
+          <cast_shadows>0</cast_shadows>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Grey</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <gravity>0 0 -9.8</gravity>
+    <magnetic_field>6e-06 2.3e-05 -4.2e-05</magnetic_field>
+    <atmosphere type='adiabatic'/>
+    <physics type='ode'>
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>1</real_time_factor>
+      <real_time_update_rate>1000</real_time_update_rate>
+    </physics>
+    <scene>
+      <ambient>0.4 0.4 0.4 1</ambient>
+      <background>0.7 0.7 0.7 1</background>
+      <shadows>1</shadows>
+    </scene>
+    <audio>
+      <device>default</device>
+    </audio>
+    <wind/>
+    <spherical_coordinates>
+      <surface_model>EARTH_WGS84</surface_model>
+      <latitude_deg>0</latitude_deg>
+      <longitude_deg>0</longitude_deg>
+      <elevation>0</elevation>
+      <heading_deg>0</heading_deg>
+    </spherical_coordinates>
+    <model name='arm_urdf'>
+      <joint name='base_to_world' type='fixed'>
+        <pose relative_to='__model__'>0 0 0 0 -0 0</pose>
+        <parent>world</parent>
+        <child>base_footprint</child>
+      </joint>
+      <link name='base_footprint'>
+        <pose relative_to='base_to_world'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>-0 -0 0.005 0 -0 0</pose>
+          <mass>4.90625</mass>
+          <inertia>
+            <ixx>0.0255943</ixx>
+            <ixy>-2.89734e-16</ixy>
+            <ixz>1.40296e-17</ixz>
+            <iyy>0.0255943</iyy>
+            <iyz>-5.29601e-16</iyz>
+            <izz>0.0511068</izz>
+          </inertia>
+        </inertial>
+        <collision name='base_footprint_fixed_joint_lump__base_link_collision_collision'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <uri>file:///home/jerome/arm_test/install/arm_urdf/share/arm_urdf/meshes/base_link.stl</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='base_footprint_fixed_joint_lump__base_link_visual_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <uri>file:///home/jerome/arm_test/install/arm_urdf/share/arm_urdf/meshes/base_link.stl</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='base_link_link1_to_base_link' type='revolute'>
+        <pose relative_to='base_footprint'>-0 0 0.01 0 -0 0</pose>
+        <parent>base_footprint</parent>
+        <child>link1</child>
+        <axis>
+          <xyz>0 0 1</xyz>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='link1'>
+        <pose relative_to='base_link_link1_to_base_link'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 -0 0.025 0 -0 0</pose>
+          <mass>0.35325</mass>
+          <inertia>
+            <ixx>0.000100088</ixx>
+            <ixy>-7.80626e-17</ixy>
+            <ixz>1.04083e-17</ixz>
+            <iyy>0.000100088</iyy>
+            <iyz>-6.93889e-17</iyz>
+            <izz>5.29875e-05</izz>
+          </inertia>
+        </inertial>
+        <collision name='link1_collision_collision'>
+          <pose>-0.004474 0.16562 0.05 -1.5708 -0 -1.63445</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <uri>file:///home/jerome/arm_test/install/arm_urdf/share/arm_urdf/meshes/link1.stl</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <collision name='link1_collision_1'>
+          <pose>0 0.05 0.04 0 -0 0</pose>
+          <geometry>
+            <cylinder>
+              <length>0.1</length>
+              <radius>0.02</radius>
+            </cylinder>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='link1_visual_visual'>
+          <pose>-0.004474 0.16562 0.05 -1.5708 -0 -1.63445</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <uri>file:///home/jerome/arm_test/install/arm_urdf/share/arm_urdf/meshes/link1.stl</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <visual name='link1_visual_1'>
+          <pose>0 0.05 0.04 1.57 -0 0</pose>
+          <geometry>
+            <cylinder>
+              <length>0.1</length>
+              <radius>0.02</radius>
+            </cylinder>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='link1_link2_to_link1' type='revolute'>
+        <pose relative_to='link1'>-0.000954 -0.01497 0.05 -3e-06 -1.57079 3.14159</pose>
+        <parent>link1</parent>
+        <child>link2</child>
+        <axis>
+          <xyz>0 0.997975 -0.063609</xyz>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='link2'>
+        <pose relative_to='link1_link2_to_link1'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>-0.014769 -0.000335 -0.083856 0 -0 0</pose>
+          <mass>0.455838</mass>
+          <inertia>
+            <ixx>0.00138993</ixx>
+            <ixy>-1.51848e-05</ixy>
+            <ixz>-0.000238238</ixz>
+            <iyy>0.00145581</iyy>
+            <iyz>-8.77509e-05</iyz>
+            <izz>8.46592e-05</izz>
+          </inertia>
+        </inertial>
+        <collision name='link2_collision_collision'>
+          <pose>0.216659 -0.013412 -0.210426 -2.79001 1.38503 -2.79558</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <uri>file:///home/jerome/arm_test/install/arm_urdf/share/arm_urdf/meshes/link2.stl</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <collision name='link2_collision_1'>
+          <pose>-0.02 0.02 -0.12 -3.14159 1.44159 -1.57159</pose>
+          <geometry>
+            <box>
+              <size>0.08 0.05 0.04</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='link2_visual_visual'>
+          <pose>0.216659 -0.013412 -0.210426 -2.79001 1.38503 -2.79558</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <uri>file:///home/jerome/arm_test/install/arm_urdf/share/arm_urdf/meshes/link2.stl</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <visual name='link2_visual_1'>
+          <pose>-0.02 0.02 -0.12 -3.14159 1.44159 -1.57159</pose>
+          <geometry>
+            <box>
+              <size>0.08 0.05 0.04</size>
+            </box>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='link2_link3_to_link2' type='revolute'>
+        <pose relative_to='link2'>-0.029539 -0.000669 -0.167711 -1.57079 -1.57079 3.14159</pose>
+        <parent>link2</parent>
+        <child>link3</child>
+        <axis>
+          <xyz>-0.063609 -0 -0.997975</xyz>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='link3'>
+        <pose relative_to='link2_link3_to_link2'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>-0.062191 -0.096857 -0.001046 0 -0 0</pose>
+          <mass>0.54165</mass>
+          <inertia>
+            <ixx>0.00171301</ixx>
+            <ixy>-0.00106359</ixy>
+            <ixz>4.55974e-05</ixz>
+            <iyy>0.000727321</iyy>
+            <iyz>6.7791e-05</iyz>
+            <izz>0.00242549</izz>
+          </inertia>
+        </inertial>
+        <collision name='link3_collision_collision'>
+          <pose>0.155487 -0.248144 -0.00991 -1.62443 -0.034299 -2.13926</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <uri>file:///home/jerome/arm_test/install/arm_urdf/share/arm_urdf/meshes/link3.stl</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='link3_visual_visual'>
+          <pose>0.155487 -0.248144 -0.00991 -1.62443 -0.034299 -2.13926</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <uri>file:///home/jerome/arm_test/install/arm_urdf/share/arm_urdf/meshes/link3.stl</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='link3_link4_to_link3' type='revolute'>
+        <pose relative_to='link3'>-0.124063 -0.193714 0.002897 -1.5708 -0 -1.5708</pose>
+        <parent>link3</parent>
+        <child>link4</child>
+        <axis>
+          <xyz>0.842233 -0.034292 -0.538022</xyz>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='link4'>
+        <pose relative_to='link3_link4_to_link3'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0.033689 -0.001372 -0.021521 0 -0 0</pose>
+          <mass>0.2512</mass>
+          <inertia>
+            <ixx>5.32515e-05</ixx>
+            <ixy>3.62761e-06</ixy>
+            <ixz>5.69143e-05</ixz>
+            <iyy>0.000142199</iyy>
+            <iyz>-2.31733e-06</iyz>
+            <izz>0.00010599</izz>
+          </inertia>
+        </inertial>
+        <collision name='link4_collision_collision'>
+          <pose>0.092595 0.255198 -0.020008 2.5688 0.120974 -1.68916</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <uri>file:///home/jerome/arm_test/install/arm_urdf/share/arm_urdf/meshes/link4.stl</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='link4_visual_visual'>
+          <pose>0.092595 0.255198 -0.020008 2.5688 0.120974 -1.68916</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <uri>file:///home/jerome/arm_test/install/arm_urdf/share/arm_urdf/meshes/link4.stl</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='link4_link5_to_link4' type='revolute'>
+        <pose relative_to='link4'>0.072641 -0.00439 -0.034699 3.14159 -1.57079 3.14159</pose>
+        <parent>link4</parent>
+        <child>link5</child>
+        <axis>
+          <xyz>0.834248 -0.16471 -0.526214</xyz>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='link5'>
+        <pose relative_to='link4_link5_to_link4'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>-0.026068 -0.021835 -0.062998 0 -0 0</pose>
+          <mass>0.9891</mass>
+          <inertia>
+            <ixx>0.00122149</ixx>
+            <ixy>-0.000235004</ixy>
+            <ixz>-0.000668758</ixz>
+            <iyy>0.00157176</iyy>
+            <iyz>-0.000335651</iyz>
+            <izz>0.000734541</izz>
+          </inertia>
+        </inertial>
+        <collision name='link5_collision_collision'>
+          <pose>-0.060673 -0.277888 -0.037713 1.183 0.554142 -0.194929</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <uri>file:///home/jerome/arm_test/install/arm_urdf/share/arm_urdf/meshes/link5.stl</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='link5_visual_visual'>
+          <pose>-0.060673 -0.277888 -0.037713 1.183 0.554142 -0.194929</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <uri>file:///home/jerome/arm_test/install/arm_urdf/share/arm_urdf/meshes/link5.stl</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='link5_link6_to_link5' type='revolute'>
+        <pose relative_to='link5'>-0.064649 -0.041199 -0.118103 -1.5708 0 0</pose>
+        <parent>link5</parent>
+        <child>link6</child>
+        <axis>
+          <xyz>-0.55116 0.787209 -0.276629</xyz>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='link6'>
+        <pose relative_to='link5_link6_to_link5'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>-0.022543 0.026375 -0.010263 0 -0 0</pose>
+          <mass>0.851318</mass>
+          <inertia>
+            <ixx>0.00050444</ixx>
+            <ixy>-0.000107891</ixy>
+            <ixz>1.07684e-05</ixz>
+            <iyy>0.000592784</iyy>
+            <iyz>7.09292e-05</iyz>
+            <izz>0.000820421</izz>
+          </inertia>
+        </inertial>
+        <collision name='link6_collision_collision'>
+          <pose>0 0 -0 -1.85196 0.07812 0.588288</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <uri>file:///home/jerome/arm_test/install/arm_urdf/share/arm_urdf/meshes/link6.stl</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <collision name='link6_fixed_joint_lump__AX_12A_03_collision_collision_1'>
+          <pose>-0.041395 0.031764 -0.026045 3.06029 -0.280284 -0.959973</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <uri>file:///home/jerome/arm_test/install/arm_urdf/share/arm_urdf/meshes/AX_12A_03.stl</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <collision name='link6_fixed_joint_lump__AX_12A_01_collision_collision_2'>
+          <pose>-0.042494 0.035245 -0.013045 -0.081299 -0.280284 -0.959973</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <uri>file:///home/jerome/arm_test/install/arm_urdf/share/arm_urdf/meshes/AX_12A_01.stl</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <collision name='link6_fixed_joint_lump__AX_12A_02_collision_collision_3'>
+          <pose>-0.043868 0.03912 -0.000184 -0.081299 -0.280284 -0.959973</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <uri>file:///home/jerome/arm_test/install/arm_urdf/share/arm_urdf/meshes/AX_12A_02.stl</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <collision name='link6_fixed_joint_lump__AX_12A_04_collision_collision_4'>
+          <pose>-0.044734 0.041695 0.008867 -0.081299 -0.280284 -0.959973</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <uri>file:///home/jerome/arm_test/install/arm_urdf/share/arm_urdf/meshes/AX_12A_04.stl</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='link6_visual_visual'>
+          <pose>0 0 -0 -1.85196 0.07812 0.588288</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <uri>file:///home/jerome/arm_test/install/arm_urdf/share/arm_urdf/meshes/link6.stl</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <visual name='link6_fixed_joint_lump__AX_12A_03_visual_visual_1'>
+          <pose>-0.041395 0.031764 -0.026045 3.06029 -0.280284 -0.959973</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <uri>file:///home/jerome/arm_test/install/arm_urdf/share/arm_urdf/meshes/AX_12A_03.stl</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <visual name='link6_fixed_joint_lump__AX_12A_01_visual_visual_2'>
+          <pose>-0.042494 0.035245 -0.013045 -0.081299 -0.280284 -0.959973</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <uri>file:///home/jerome/arm_test/install/arm_urdf/share/arm_urdf/meshes/AX_12A_01.stl</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <visual name='link6_fixed_joint_lump__AX_12A_02_visual_visual_3'>
+          <pose>-0.043868 0.03912 -0.000184 -0.081299 -0.280284 -0.959973</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <uri>file:///home/jerome/arm_test/install/arm_urdf/share/arm_urdf/meshes/AX_12A_02.stl</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <visual name='link6_fixed_joint_lump__AX_12A_04_visual_visual_4'>
+          <pose>-0.044734 0.041695 0.008867 -0.081299 -0.280284 -0.959973</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <uri>file:///home/jerome/arm_test/install/arm_urdf/share/arm_urdf/meshes/AX_12A_04.stl</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='link6_Revolute-24' type='revolute'>
+        <pose relative_to='link6'>-0.015514 0.059845 0.002375 3.14159 -0 0</pose>
+        <parent>link6</parent>
+        <child>Gear_Flange_Driven</child>
+        <axis>
+          <xyz>0.091609 0.272436 0.957803</xyz>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='Gear_Flange_Driven'>
+        <pose relative_to='link6_Revolute-24'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>-0.003815 -0.045087 0.026647 0 -0 0</pose>
+          <mass>0.292531</mass>
+          <inertia>
+            <ixx>0.00030971</ixx>
+            <ixy>-4.47016e-05</ixy>
+            <ixz>1.67235e-05</ixz>
+            <iyy>9.7141e-05</iyy>
+            <iyz>9.52576e-05</iyz>
+            <izz>0.000276608</izz>
+          </inertia>
+        </inertial>
+        <collision name='Gear_Flange_Driven_collision_collision'>
+          <pose>0.000736 -0.001927 -0.003699 0.290783 -0.02128 2.88819</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <uri>file:///home/jerome/arm_test/install/arm_urdf/share/arm_urdf/meshes/Gear_Flange_Driven.stl</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <collision name='Gear_Flange_Driven_fixed_joint_lump__Soft_finger_1_collision_collision_1'>
+          <pose>0.003712 -0.020144 0.036696 2.85081 0.02128 -0.253398</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <uri>file:///home/jerome/arm_test/install/arm_urdf/share/arm_urdf/meshes/Soft_finger_1.stl</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='Gear_Flange_Driven_visual_visual'>
+          <pose>0.000736 -0.001927 -0.003699 0.290783 -0.02128 2.88819</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <uri>file:///home/jerome/arm_test/install/arm_urdf/share/arm_urdf/meshes/Gear_Flange_Driven.stl</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <visual name='Gear_Flange_Driven_fixed_joint_lump__Soft_finger_1_visual_visual_1'>
+          <pose>0.003712 -0.020144 0.036696 2.85081 0.02128 -0.253398</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <uri>file:///home/jerome/arm_test/install/arm_urdf/share/arm_urdf/meshes/Soft_finger_1.stl</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='AX_12A_04_Revolute-34' type='revolute'>
+        <pose relative_to='link6'>-0.044706 0.041613 0.00858 -1.5708 -0 0</pose>
+        <parent>link6</parent>
+        <child>Gear_Flange_Motor</child>
+        <axis>
+          <xyz>-0.091609 -0.957803 0.272436</xyz>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='Gear_Flange_Motor'>
+        <pose relative_to='AX_12A_04_Revolute-34'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>-0.031299 0.026178 0.034636 0 -0 0</pose>
+          <mass>0.293908</mass>
+          <inertia>
+            <ixx>0.000237767</ixx>
+            <ixy>5.99766e-05</ixy>
+            <ixz>0.000114313</ixz>
+            <iyy>0.00028277</iyy>
+            <iyz>-7.64342e-05</iyz>
+            <izz>0.000173813</izz>
+          </inertia>
+        </inertial>
+        <collision name='Gear_Flange_Motor_collision_collision'>
+          <pose>-0.000366 -0.003831 0.00109 1.90397 0.586254 -3.04777</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <uri>file:///home/jerome/arm_test/install/arm_urdf/share/arm_urdf/meshes/Gear_Flange_Motor.stl</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <collision name='Gear_Flange_Motor_fixed_joint_lump__Soft_finger_2_collision_collision_1'>
+          <pose>-0.018143 0.036623 0.012537 1.23762 -0.586254 0.093821</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <uri>file:///home/jerome/arm_test/install/arm_urdf/share/arm_urdf/meshes/Soft_finger_2.stl</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='Gear_Flange_Motor_visual_visual'>
+          <pose>-0.000366 -0.003831 0.00109 1.90397 0.586254 -3.04777</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <uri>file:///home/jerome/arm_test/install/arm_urdf/share/arm_urdf/meshes/Gear_Flange_Motor.stl</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <visual name='Gear_Flange_Motor_fixed_joint_lump__Soft_finger_2_visual_visual_1'>
+          <pose>-0.018143 0.036623 0.012537 1.23762 -0.586254 0.093821</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <uri>file:///home/jerome/arm_test/install/arm_urdf/share/arm_urdf/meshes/Soft_finger_2.stl</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <static>0</static>
+      <plugin name='gazebo_ros2_control' filename='libgazebo_ros2_control.so'>
+        <update_rate>1000</update_rate>
+        <parameters>/home/jerome/arm_test/install/arm_urdf_moveit_config/share/arm_urdf_moveit_config/config/ros2_controllers.yaml</parameters>
+      </plugin>
+      <pose>0 0 0 0 -0 0</pose>
+    </model>
+    <state world_name='default'>
+      <sim_time>18 172000000</sim_time>
+      <real_time>18 339501555</real_time>
+      <wall_time>1753103674 927971978</wall_time>
+      <iterations>18172</iterations>
+      <model name='arm_urdf'>
+        <pose>0 0 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='Gear_Flange_Driven'>
+          <pose>-0.40758 0.031801 0.473207 -1.5708 -2.6e-05 5.7e-05</pose>
+          <velocity>5.9e-05 -7.4e-05 -0.010042 1.8e-05 -0.000291 0.00045</velocity>
+          <acceleration>0.033838 -0.077152 -10.0431 -0.202033 0.661218 1.74016</acceleration>
+          <wrench>0.009899 -0.022569 -2.93791 0 -0 0</wrench>
+        </link>
+        <link name='Gear_Flange_Motor'>
+          <pose>-0.436771 0.025594 0.454974 -5e-06 -2.4e-05 5.6e-05</pose>
+          <velocity>6.5e-05 -8.6e-05 -0.010048 0.000201 0.001625 -9.5e-05</velocity>
+          <acceleration>0.123733 -0.090352 -9.99194 -2.93969 1.51685 3.04624</acceleration>
+          <wrench>0.036366 -0.026555 -2.93671 0 -0 0</wrench>
+        </link>
+        <link name='base_footprint'>
+          <pose>0 0 0 0 -0 0</pose>
+          <velocity>-0 0 0 1e-06 -0 0</velocity>
+          <acceleration>-5e-06 -2e-06 1e-05 0.001682 -0.000269 -5.8e-05</acceleration>
+          <wrench>-2.6e-05 -8e-06 5.1e-05 0 -0 0</wrench>
+        </link>
+        <link name='link1'>
+          <pose>-0 -0 0.01 -0 1e-06 -0.000221</pose>
+          <velocity>3e-06 0 -0 -8e-05 -5.2e-05 -0.00165</velocity>
+          <acceleration>0.001226 0.002262 -0.000458 -0.07919 -0.051524 -1.65037</acceleration>
+          <wrench>0.000433 0.000799 -0.000162 0 -0 0</wrench>
+        </link>
+        <link name='link2'>
+          <pose>-0.000957 -0.01497 0.06 0.063575 -1.56225 3.07779</pose>
+          <velocity>-2.2e-05 6e-06 1e-06 -0.003647 -0.054927 -0.001389</velocity>
+          <acceleration>0.829236 0.065307 -4.59927 0.68317 -1.46404 -1.28331</acceleration>
+          <wrench>0.377997 0.02977 -2.09652 0 -0 0</wrench>
+        </link>
+        <link name='link3'>
+          <pose>-0.16841 -0.014279 0.029031 -1.57085 -0.000909 -0.000228</pose>
+          <velocity>0.00168 0.000125 -0.009199 -0.0005 -0.006006 -0.001384</velocity>
+          <acceleration>1.09743 0.259394 -9.57287 0.327709 -0.034961 3.0641</acceleration>
+          <wrench>0.594423 0.140501 -5.18514 0 -0 0</wrench>
+        </link>
+        <link name='link4'>
+          <pose>-0.292648 -0.011343 0.222632 -0.995641 -1.56893 -2.14871</pose>
+          <velocity>0.000521 0.000394 -0.009947 0.010322 -0.006697 -0.018295</velocity>
+          <acceleration>0.320847 0.440237 -10.0774 2.41457 -1.43762 1.9984</acceleration>
+          <wrench>0.080597 0.110587 -2.53145 0 -0 0</wrench>
+        </link>
+        <link name='link5'>
+          <pose>-0.327409 -0.006971 0.295244 -3.13975 -0.000949 -0.002577</pose>
+          <velocity>0.000115 0.00028 -0.010135 0.012271 -0.006331 -0.017066</velocity>
+          <acceleration>0.0876 -0.048561 -10.0328 2.41293 -1.07364 0.632452</acceleration>
+          <wrench>0.086646 -0.048032 -9.92342 0 -0 0</wrench>
+        </link>
+        <link name='link6'>
+          <pose>-0.392064 0.034176 0.413362 1.57079 -2.6e-05 5.6e-05</pose>
+          <velocity>6.9e-05 -6.6e-05 -0.01004 2.8e-05 -0.000187 0.00042</velocity>
+          <acceleration>0.059896 -0.076589 -10.0434 0.202697 -0.048959 0.590797</acceleration>
+          <wrench>0.050991 -0.065202 -8.55012 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='ground_plane'>
+        <pose>0 0 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>0 0 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <light name='sun'>
+        <pose>0 0 10 0 -0 0</pose>
+      </light>
+    </state>
+    <gui fullscreen='0'>
+      <camera name='user_camera'>
+        <pose>5 -5 2 0 0.275643 2.35619</pose>
+        <view_controller>orbit</view_controller>
+        <projection_type>perspective</projection_type>
+      </camera>
+    </gui>
+  </world>
+</sdf>

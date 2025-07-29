@@ -1,0 +1,43 @@
+[0.012s] Invoking command in '/home/jerome/arm_new/build/arm_urdf': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/jerome/ws_moveit2/install/moveit_configs_utils:/home/jerome/ws_moveit2/install/launch_param_builder:/opt/ros/humble /usr/bin/cmake --build /home/jerome/arm_new/build/arm_urdf -- -j16 -l16
+[0.040s] -- Found ament_cmake: 1.3.11 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.132s] -- Found rclcpp: 16.0.12 (/opt/ros/humble/share/rclcpp/cmake)
+[0.151s] -- Found rosidl_generator_c: 3.1.6 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+[0.152s] -- Found rosidl_adapter: 3.1.6 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[0.156s] -- Found rosidl_generator_cpp: 3.1.6 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+[0.163s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.173s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.195s] -- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+[0.197s] -- Found rmw_cyclonedds_cpp: 1.3.4 (/opt/ros/humble/share/rmw_cyclonedds_cpp/cmake)
+[0.209s] -- Using RMW implementation 'rmw_cyclonedds_cpp' as default
+[0.243s] -- Found geometry_msgs: 4.9.0 (/opt/ros/humble/share/geometry_msgs/cmake)
+[0.256s] -- Found tf2_geometry_msgs: 0.25.13 (/opt/ros/humble/share/tf2_geometry_msgs/cmake)
+[0.271s] -- Found eigen3_cmake_module: 0.1.1 (/opt/ros/humble/share/eigen3_cmake_module/cmake)
+[0.272s] -- Found Eigen3: TRUE (found version "3.4.0") 
+[0.272s] -- Ensuring Eigen3 include directory is part of orocos-kdl CMake target
+[0.374s] -- Found shape_msgs: 4.9.0 (/opt/ros/humble/share/shape_msgs/cmake)
+[0.387s] -- Found sensor_msgs: 4.9.0 (/opt/ros/humble/share/sensor_msgs/cmake)
+[0.400s] -- Found moveit_ros_planning_interface: 2.5.9 (/home/jerome/ws_moveit2/install/moveit_ros_planning_interface/share/moveit_ros_planning_interface/cmake)
+[0.408s] -- Found Boost: /usr/lib/x86_64-linux-gnu/cmake/Boost-1.74.0/BoostConfig.cmake (found version "1.74.0") found components: date_time filesystem program_options system thread 
+[0.418s] [31mCMake Error at /home/jerome/ws_moveit2/install/moveit_ros_planning_interface/share/moveit_ros_planning_interface/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package):
+[0.418s]   By not providing "Findmoveit_msgs.cmake" in CMAKE_MODULE_PATH this project
+[0.418s]   has asked CMake to find a package configuration file provided by
+[0.418s]   "moveit_msgs", but CMake did not find one.
+[0.418s] 
+[0.418s]   Could not find a package configuration file provided by "moveit_msgs" with
+[0.418s]   any of the following names:
+[0.419s] 
+[0.419s]     moveit_msgsConfig.cmake
+[0.419s]     moveit_msgs-config.cmake
+[0.419s] 
+[0.419s]   Add the installation prefix of "moveit_msgs" to CMAKE_PREFIX_PATH or set
+[0.419s]   "moveit_msgs_DIR" to a directory containing one of the above files.  If
+[0.419s]   "moveit_msgs" provides a separate development package or SDK, be sure it
+[0.419s]   has been installed.
+[0.419s] Call Stack (most recent call first):
+[0.419s]   /home/jerome/ws_moveit2/install/moveit_ros_planning_interface/share/moveit_ros_planning_interface/cmake/moveit_ros_planning_interfaceConfig.cmake:41 (include)
+[0.419s]   CMakeLists.txt:16 (find_package)
+[0.419s] 
+[0.419s] [0m
+[0.420s] -- Configuring incomplete, errors occurred!
+[0.420s] See also "/home/jerome/arm_new/build/arm_urdf/CMakeFiles/CMakeOutput.log".
+[0.422s] gmake: *** [Makefile:226: cmake_check_build_system] Error 1

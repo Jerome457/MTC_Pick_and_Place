@@ -1,9 +1,10 @@
 import os
 from launch import LaunchDescription
-from launch.actions import ExecuteProcess
+from launch.actions import ExecuteProcess, IncludeLaunchDescription
 from launch_ros.actions import Node
 from ament_index_python.packages import get_package_share_directory
 from moveit_configs_utils import MoveItConfigsBuilder
+from launch.launch_description_sources import PythonLaunchDescriptionSource
 
 
 def generate_launch_description():
@@ -18,6 +19,9 @@ def generate_launch_description():
         .to_moveit_configs()
     )
 
+    # Add sim time globally
+    sim_time = {"use_sim_time": True}
+
     # Load  ExecuteTaskSolutionCapability so we can execute found solutions in simulation
     move_group_capabilities = {
         "capabilities": "move_group/ExecuteTaskSolutionCapability"
@@ -31,7 +35,14 @@ def generate_launch_description():
         parameters=[
             moveit_config.to_dict(),
             move_group_capabilities,
+            sim_time,
         ],
+    )
+
+    gazebo_launch_file = os.path.join(
+        get_package_share_directory("gazebo_ros"),
+        "launch",
+        "gazebo.launch.py"
     )
 
     # RViz
@@ -47,17 +58,18 @@ def generate_launch_description():
         parameters=[
             moveit_config.robot_description,
             moveit_config.robot_description_semantic,
+            sim_time,
         ],
     )
 
-    # Static TF
-    static_tf = Node(
-        package="tf2_ros",
-        executable="static_transform_publisher",
-        name="static_transform_publisher",
-        output="log",
-        arguments=["0.0", "0.0", "0.0", "0.0", "0.0", "0.0", "world", "base_footprint"],
-    )
+    # # Static TF
+    # static_tf = Node(
+    #     package="tf2_ros",
+    #     executable="static_transform_publisher",
+    #     name="static_transform_publisher",
+    #     output="log",
+    #     arguments=["0.0", "0.0", "0.0", "0.0", "0.0", "0.0", "world", "base_footprint"],
+    # )
 
     # Publish TF
     robot_state_publisher = Node(
@@ -67,6 +79,7 @@ def generate_launch_description():
         output="both",
         parameters=[
             moveit_config.robot_description,
+            sim_time,
         ],
     )
 
@@ -79,9 +92,37 @@ def generate_launch_description():
     ros2_control_node = Node(
         package="controller_manager",
         executable="ros2_control_node",
-        parameters=[moveit_config.to_dict(), ros2_controllers_path],
+        parameters=[moveit_config.to_dict(), ros2_controllers_path,sim_time],
         output="both",
     )
+        # Gazebo Launch
+    world_file = os.path.join(
+        get_package_share_directory("arm_urdf"),
+        "config",
+        "arm.world"
+    )
+
+    gazebo = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource(gazebo_launch_file),
+        launch_arguments={
+            "use_sim_time": "true",
+            "debug": "false",
+            "gui": "true",
+            "paused": "true",
+            "world": world_file,
+        }.items()
+    )
+    spawn_the_robot = Node(
+        package="gazebo_ros",
+        executable="spawn_entity.py",
+        arguments=[
+            "-entity", "arm_urdf",
+            "-topic", "/robot_description",
+        ],
+        output="screen"
+    )
+
+    
 
     # Load controllers
     load_controllers = []
@@ -92,7 +133,7 @@ def generate_launch_description():
     ]:
         load_controllers += [
             ExecuteProcess(
-                cmd=["ros2 run controller_manager spawner {}".format(controller)],
+                cmd=["ros2 run controller_manager spawner {} --controller-manager /controller_manager".format(controller)],
                 shell=True,
                 output="screen",
             )
@@ -100,11 +141,12 @@ def generate_launch_description():
 
     return LaunchDescription(
         [
-            rviz_node,
-            static_tf,
+            gazebo,                     # 1. Launch Gazebo first
+            spawn_the_robot,           # 2. Then spawn robot into Gazebo
+            ros2_control_node,         # 3. Then launch ros2_control_node (after robot is in Gazebo)
             robot_state_publisher,
             run_move_group_node,
-            ros2_control_node,
+            rviz_node,
         ]
         + load_controllers
     )

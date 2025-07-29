@@ -9,6 +9,7 @@ moveit_simple_controller_manager:
 
   arm_controller:
     type: FollowJointTrajectory
+    action_ns: follow_joint_trajectory
     joints:
       - base_link_link1_to_base_link
       - link1_link2_to_link1
@@ -16,10 +17,10 @@ moveit_simple_controller_manager:
       - link3_link4_to_link3
       - link4_link5_to_link4
       - link5_link6_to_link5
-    action_ns: follow_joint_trajectory
   hand_controller:
-    type: GripperCommand
+    type: FollowJointTrajectory
+    action_ns: follow_joint_trajectory
     joints:
+      - link6_Revolute-24
       - AX_12A_04_Revolute-34
-    action_ns: gripper_cmd
     default: true

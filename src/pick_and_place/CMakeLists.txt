@@ -17,7 +17,11 @@ find_package(std_msgs REQUIRED)
 find_package(shape_msgs REQUIRED)  # Recent addition
 # find_package(robo_moveit_config REQUIRED)
 find_package(sensor_msgs REQUIRED) # Very Recent Addition
+find_package(gazebo_msgs REQUIRED)
+find_package(gazebo_msgs REQUIRED)
+find_package(linkattacher_msgs)
 find_package(moveit_task_constructor_core REQUIRED)
+find_package(moveit_ros_planning REQUIRED)
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
@@ -38,15 +42,29 @@ ament_target_dependencies(pick_and_place
     sensor_msgs # Very Recent Addition
 )
 
+add_executable(gripper_monitor src/gazebo_link_attacher.cpp)
+ament_target_dependencies(gripper_monitor
+  rclcpp
+sensor_msgs 
+std_srvs
+linkattacher_msgs
+)
+
+
 add_executable(mtc_tutorial src/mtc.cpp)
-ament_target_dependencies(mtc_tutorial moveit_task_constructor_core rclcpp)
+
+ament_target_dependencies(mtc_tutorial moveit_task_constructor_core rclcpp linkattacher_msgs)
 target_include_directories(mtc_tutorial PUBLIC
 $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
 $<INSTALL_INTERFACE:include>)
 target_compile_features(mtc_tutorial PUBLIC c_std_99 cxx_std_17)  # Require C99 and C++17
 
-install(TARGETS mtc_tutorial
+install(TARGETS mtc_tutorial 
 DESTINATION lib/${PROJECT_NAME})
+
+
+install(TARGETS gripper_monitor
+  DESTINATION lib/${PROJECT_NAME})
 
 
 # Install the target

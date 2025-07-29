@@ -1,4 +1,5 @@
 /home/jerome/arm_new/install/pick_and_place/lib/pick_and_place/mtc_tutorial
+/home/jerome/arm_new/install/pick_and_place/lib/pick_and_place/gripper_monitor
 /home/jerome/arm_new/install/pick_and_place/share/pick_and_place//launch/pick_new.launch.py
 /home/jerome/arm_new/install/pick_and_place/share/pick_and_place//launch/pick_and_place.launch.py
 /home/jerome/arm_new/install/pick_and_place/lib/pick_and_place/pick_and_place

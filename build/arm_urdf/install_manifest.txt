@@ -20,9 +20,11 @@
 /home/jerome/arm_new/install/arm_urdf/share/arm_urdf//urdf/(Unsaved).urdf
 /home/jerome/arm_new/install/arm_urdf/share/arm_urdf//urdf/gen3_lite_gen3_lite_2f.xacro
 /home/jerome/arm_new/install/arm_urdf/share/arm_urdf//urdf/robot_model_6_dof.xacro
+/home/jerome/arm_new/install/arm_urdf/share/arm_urdf//urdf/cylinder.urdf
 /home/jerome/arm_new/install/arm_urdf/share/arm_urdf//urdf/arm_urdf.xacro
 /home/jerome/arm_new/install/arm_urdf/share/arm_urdf//urdf/arm_urdf.urdf
 /home/jerome/arm_new/install/arm_urdf/share/arm_urdf//config/display.rviz
+/home/jerome/arm_new/install/arm_urdf/share/arm_urdf//config/arm.world
 /home/jerome/arm_new/install/arm_urdf/share/ament_index/resource_index/package_run_dependencies/arm_urdf
 /home/jerome/arm_new/install/arm_urdf/share/ament_index/resource_index/parent_prefix_path/arm_urdf
 /home/jerome/arm_new/install/arm_urdf/share/arm_urdf/environment/ament_prefix_path.sh

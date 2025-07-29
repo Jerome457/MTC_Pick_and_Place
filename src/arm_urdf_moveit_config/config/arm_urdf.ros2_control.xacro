@@ -2,19 +2,17 @@
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
     <xacro:macro name="arm_urdf_ros2_control" params="name initial_positions_file">
         <xacro:property name="initial_positions" value="${load_yaml(initial_positions_file)['initial_positions']}"/>
-
-        <ros2_control name="${name}" type="system">
+      <gazebo>
+        <plugin name="gazebo_ros2_control" filename="libgazebo_ros2_control.so">
+            <update_rate>1000</update_rate> 
+            <parameters>$(find arm_urdf_moveit_config)/config/ros2_controllers.yaml</parameters>
+        </plugin>
+      </gazebo>
+        <ros2_control name="GazeboSimSystem" type="system">
             <hardware>
                 <!-- By default, set up controllers for simulation. This won't work on real hardware -->
-                <plugin>mock_components/GenericSystem</plugin>
+                <plugin>gazebo_ros2_control/GazeboSystem</plugin>
             </hardware>
-            <joint name="AX_12A_04_Revolute-34">
-                <command_interface name="position"/>
-                <state_interface name="position">
-                  <param name="initial_value">${initial_positions['AX_12A_04_Revolute-34']}</param>
-                </state_interface>
-                <state_interface name="velocity"/>
-            </joint>
             <joint name="base_link_link1_to_base_link">
                 <command_interface name="position"/>
                 <state_interface name="position">
@@ -54,6 +52,20 @@
                 <command_interface name="position"/>
                 <state_interface name="position">
                   <param name="initial_value">${initial_positions['link5_link6_to_link5']}</param>
+                </state_interface>
+                <state_interface name="velocity"/>
+            </joint>
+            <joint name="link6_Revolute-24">
+                <command_interface name="position"/>
+                <state_interface name="position">
+                  <param name="initial_value">${initial_positions['link6_Revolute-24']}</param>
+                </state_interface>
+                <state_interface name="velocity"/>
+            </joint>
+            <joint name="AX_12A_04_Revolute-34">
+                <command_interface name="position"/>
+                <state_interface name="position">
+                  <param name="initial_value">${initial_positions['AX_12A_04_Revolute-34']}</param>
                 </state_interface>
                 <state_interface name="velocity"/>
             </joint>

@@ -1,0 +1,7 @@
+{
+  "package_name": "linkattacher_msgs",
+  "non_idl_tuples": [
+    "/home/jerome/arm_new/src/linkattacher_msgs:srv/AttachLink.srv",
+    "/home/jerome/arm_new/src/linkattacher_msgs:srv/DetachLink.srv"
+  ]
+}

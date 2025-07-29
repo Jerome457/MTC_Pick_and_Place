@@ -16,7 +16,7 @@ find_package(ament_cmake REQUIRED)
 # find_package(moveit_ros_planning_interface REQUIRED)
 # find_package(moveit_task_constructor_core REQUIRED)
 # Gazebo + URDF (if needed elsewhere)
-# find_package(gazebo_ros REQUIRED)
+find_package(gazebo_ros REQUIRED)
 find_package(urdf REQUIRED)
 
 # add_executable(pick_and_place src/pick_and_place.cpp)

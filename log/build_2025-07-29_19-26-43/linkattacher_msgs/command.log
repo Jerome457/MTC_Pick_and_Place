@@ -1,0 +1,1 @@
+Invoking command in '/home/jerome/arm_new/build/linkattacher_msgs': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/jerome/ws_moveit2/install/moveit_configs_utils:/home/jerome/ws_moveit2/install/launch_param_builder:/opt/ros/humble /usr/bin/cmake /home/jerome/arm_new/src/linkattacher_msgs -DCMAKE_INSTALL_PREFIX=/home/jerome/arm_new/install/linkattacher_msgs

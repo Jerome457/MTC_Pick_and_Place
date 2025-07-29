@@ -24,6 +24,7 @@
 /home/jerome/arm_new/install/arm_urdf_moveit_config/share/arm_urdf_moveit_config/config/initial_positions.yaml
 /home/jerome/arm_new/install/arm_urdf_moveit_config/share/arm_urdf_moveit_config/config/kinematics.yaml
 /home/jerome/arm_new/install/arm_urdf_moveit_config/share/arm_urdf_moveit_config/config/arm_urdf.srdf
+/home/jerome/arm_new/install/arm_urdf_moveit_config/share/arm_urdf_moveit_config/config/sensors_3d.yaml
 /home/jerome/arm_new/install/arm_urdf_moveit_config/share/arm_urdf_moveit_config/config/moveit_controllers.yaml
 /home/jerome/arm_new/install/arm_urdf_moveit_config/share/arm_urdf_moveit_config/config/mtc.rviz
 /home/jerome/arm_new/install/arm_urdf_moveit_config/share/arm_urdf_moveit_config/config/arm_urdf.urdf.xacro
