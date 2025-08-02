@@ -1,0 +1,42 @@
+-- Found ament_cmake: 1.3.12 (/opt/ros/humble/share/ament_cmake/cmake)
+-- Override CMake install command with custom implementation using symlinks instead of copying resources
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/jerome/arm_new/build/arm_urdf_moveit_config
+-- Install configuration: ""
+-- Execute custom install script
+-- Symlinking: /home/jerome/arm_new/install/arm_urdf_moveit_config/share/ament_index/resource_index/package_run_dependencies/arm_urdf_moveit_config
+-- Symlinking: /home/jerome/arm_new/install/arm_urdf_moveit_config/share/ament_index/resource_index/parent_prefix_path/arm_urdf_moveit_config
+-- Symlinking: /home/jerome/arm_new/install/arm_urdf_moveit_config/share/arm_urdf_moveit_config/environment/ament_prefix_path.sh
+-- Symlinking: /home/jerome/arm_new/install/arm_urdf_moveit_config/share/arm_urdf_moveit_config/environment/ament_prefix_path.dsv
+-- Symlinking: /home/jerome/arm_new/install/arm_urdf_moveit_config/share/arm_urdf_moveit_config/environment/path.sh
+-- Symlinking: /home/jerome/arm_new/install/arm_urdf_moveit_config/share/arm_urdf_moveit_config/environment/path.dsv
+-- Symlinking: /home/jerome/arm_new/install/arm_urdf_moveit_config/share/arm_urdf_moveit_config/local_setup.bash
+-- Symlinking: /home/jerome/arm_new/install/arm_urdf_moveit_config/share/arm_urdf_moveit_config/local_setup.sh
+-- Symlinking: /home/jerome/arm_new/install/arm_urdf_moveit_config/share/arm_urdf_moveit_config/local_setup.zsh
+-- Symlinking: /home/jerome/arm_new/install/arm_urdf_moveit_config/share/arm_urdf_moveit_config/local_setup.dsv
+-- Symlinking: /home/jerome/arm_new/install/arm_urdf_moveit_config/share/arm_urdf_moveit_config/package.dsv
+-- Symlinking: /home/jerome/arm_new/install/arm_urdf_moveit_config/share/ament_index/resource_index/packages/arm_urdf_moveit_config
+-- Symlinking: /home/jerome/arm_new/install/arm_urdf_moveit_config/share/arm_urdf_moveit_config/cmake/arm_urdf_moveit_configConfig.cmake
+-- Symlinking: /home/jerome/arm_new/install/arm_urdf_moveit_config/share/arm_urdf_moveit_config/cmake/arm_urdf_moveit_configConfig-version.cmake
+-- Symlinking: /home/jerome/arm_new/install/arm_urdf_moveit_config/share/arm_urdf_moveit_config/package.xml
+-- Symlinking: /home/jerome/arm_new/install/arm_urdf_moveit_config/share/arm_urdf_moveit_config/launch/demo.launch.py
+-- Symlinking: /home/jerome/arm_new/install/arm_urdf_moveit_config/share/arm_urdf_moveit_config/launch/move_group.launch.py
+-- Symlinking: /home/jerome/arm_new/install/arm_urdf_moveit_config/share/arm_urdf_moveit_config/launch/moveit_rviz.launch.py
+-- Symlinking: /home/jerome/arm_new/install/arm_urdf_moveit_config/share/arm_urdf_moveit_config/launch/rsp.launch.py
+-- Symlinking: /home/jerome/arm_new/install/arm_urdf_moveit_config/share/arm_urdf_moveit_config/launch/setup_assistant.launch.py
+-- Symlinking: /home/jerome/arm_new/install/arm_urdf_moveit_config/share/arm_urdf_moveit_config/launch/spawn_controllers.launch.py
+-- Symlinking: /home/jerome/arm_new/install/arm_urdf_moveit_config/share/arm_urdf_moveit_config/launch/static_virtual_joint_tfs.launch.py
+-- Symlinking: /home/jerome/arm_new/install/arm_urdf_moveit_config/share/arm_urdf_moveit_config/launch/warehouse_db.launch.py
+-- Symlinking: /home/jerome/arm_new/install/arm_urdf_moveit_config/share/arm_urdf_moveit_config/config/arm_urdf.ros2_control.xacro
+-- Symlinking: /home/jerome/arm_new/install/arm_urdf_moveit_config/share/arm_urdf_moveit_config/config/arm_urdf.srdf
+-- Symlinking: /home/jerome/arm_new/install/arm_urdf_moveit_config/share/arm_urdf_moveit_config/config/arm_urdf.urdf.xacro
+-- Symlinking: /home/jerome/arm_new/install/arm_urdf_moveit_config/share/arm_urdf_moveit_config/config/initial_positions.yaml
+-- Symlinking: /home/jerome/arm_new/install/arm_urdf_moveit_config/share/arm_urdf_moveit_config/config/joint_limits.yaml
+-- Symlinking: /home/jerome/arm_new/install/arm_urdf_moveit_config/share/arm_urdf_moveit_config/config/kinematics.yaml
+-- Symlinking: /home/jerome/arm_new/install/arm_urdf_moveit_config/share/arm_urdf_moveit_config/config/moveit.rviz
+-- Symlinking: /home/jerome/arm_new/install/arm_urdf_moveit_config/share/arm_urdf_moveit_config/config/moveit_controllers.yaml
+-- Symlinking: /home/jerome/arm_new/install/arm_urdf_moveit_config/share/arm_urdf_moveit_config/config/mtc.rviz
+-- Symlinking: /home/jerome/arm_new/install/arm_urdf_moveit_config/share/arm_urdf_moveit_config/config/pilz_cartesian_limits.yaml
+-- Symlinking: /home/jerome/arm_new/install/arm_urdf_moveit_config/share/arm_urdf_moveit_config/config/ros2_controllers.yaml
+-- Symlinking: /home/jerome/arm_new/install/arm_urdf_moveit_config/share/arm_urdf_moveit_config/.setup_assistant

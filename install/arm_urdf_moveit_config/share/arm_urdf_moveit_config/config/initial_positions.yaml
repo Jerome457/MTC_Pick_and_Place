@@ -1,10 +1,1 @@
-# Default initial positions for arm_urdf's ros2_control fake system
-
-initial_positions:
-  AX_12A_04_Revolute-34: 0
-  base_link_link1_to_base_link: 0
-  link1_link2_to_link1: 0
-  link2_link3_to_link2: 0
-  link3_link4_to_link3: 0
-  link4_link5_to_link4: 0
-  link5_link6_to_link5: 0
+/home/jerome/arm_new/src/arm_urdf_moveit_config/config/initial_positions.yaml

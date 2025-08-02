@@ -1,18 +1,1 @@
-from launch import LaunchDescription
-from launch_ros.actions import Node
-from moveit_configs_utils import MoveItConfigsBuilder
-
-def generate_launch_description():
-    moveit_config = MoveItConfigsBuilder("arm_urdf").to_dict()
-
-    # MTC Demo node
-    pick_place_demo = Node(
-        package="pick_and_place",
-        executable="mtc_tutorial",
-        output="screen",
-        parameters=[
-            moveit_config,
-        ],
-    )
-
-    return LaunchDescription([pick_place_demo])
+/home/jerome/arm_new/src/pick_and_place/launch/pick_new.launch.py

@@ -1,0 +1,84 @@
+[0.008s] Invoking command in '/home/jerome/arm_new/build/pick_and_place': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/jerome/ws_moveit2/install/moveit_configs_utils:/home/jerome/ws_moveit2/install/launch_param_builder:/opt/ros/humble /usr/bin/cmake /home/jerome/arm_new/src/pick_and_place -DCMAKE_INSTALL_PREFIX=/home/jerome/arm_new/install/pick_and_place
+[0.061s] -- The C compiler identification is GNU 11.4.0
+[0.110s] -- The CXX compiler identification is GNU 11.4.0
+[0.115s] -- Detecting C compiler ABI info
+[0.186s] -- Detecting C compiler ABI info - done
+[0.191s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.191s] -- Detecting C compile features
+[0.191s] -- Detecting C compile features - done
+[0.193s] -- Detecting CXX compiler ABI info
+[0.283s] -- Detecting CXX compiler ABI info - done
+[0.288s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.288s] -- Detecting CXX compile features
+[0.289s] -- Detecting CXX compile features - done
+[0.294s] -- Found ament_cmake: 1.3.12 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.414s] -- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter 
+[0.511s] -- Found moveit_ros_planning_interface: 2.5.9 (/home/jerome/ws_moveit2/install/moveit_ros_planning_interface/share/moveit_ros_planning_interface/cmake)
+[0.688s] -- Found Boost: /usr/lib/x86_64-linux-gnu/cmake/Boost-1.74.0/BoostConfig.cmake (found version "1.74.0") found components: date_time filesystem program_options system thread 
+[0.746s] -- Found rosidl_generator_c: 3.1.7 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+[0.754s] -- Found rosidl_adapter: 3.1.7 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[0.764s] -- Found rosidl_generator_cpp: 3.1.7 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+[0.778s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.797s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.963s] -- Found Boost: /usr/lib/x86_64-linux-gnu/cmake/Boost-1.74.0/BoostConfig.cmake (found version "1.74.0") found components: chrono date_time filesystem iostreams program_options regex serialization system thread 
+[1.024s] -- Found parameter_traits: 0.5.0 (/opt/ros/humble/share/parameter_traits/cmake)
+[1.075s] -- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+[1.081s] -- Found rmw_cyclonedds_cpp: 1.3.4 (/opt/ros/humble/share/rmw_cyclonedds_cpp/cmake)
+[1.109s] -- Using RMW implementation 'rmw_cyclonedds_cpp' as default
+[1.122s] -- Found Threads: TRUE  
+[1.166s] -- Found rclcpp_lifecycle: 16.0.14 (/opt/ros/humble/share/rclcpp_lifecycle/cmake)
+[1.190s] -- Found Boost: /usr/lib/x86_64-linux-gnu/cmake/Boost-1.74.0/BoostConfig.cmake (found version "1.74.0") found components: filesystem 
+[1.300s] -- library: /usr/lib/x86_64-linux-gnu/libcurl.so
+[1.332s] -- Found Eigen3: TRUE (found version "3.4.0") 
+[1.332s] -- Ensuring Eigen3 include directory is part of orocos-kdl CMake target
+[1.477s] -- Found Boost: /usr/lib/x86_64-linux-gnu/cmake/Boost-1.74.0/BoostConfig.cmake (found version "1.74.0") found components: system filesystem date_time program_options thread chrono 
+[1.499s] -- Found Boost: /usr/lib/x86_64-linux-gnu/cmake/Boost-1.74.0/BoostConfig.cmake (found version "1.74.0") found components: thread system filesystem regex date_time program_options 
+[1.611s] -- Found Boost: /usr/lib/x86_64-linux-gnu/cmake/Boost-1.74.0/BoostConfig.cmake (found version "1.74.0") found components: system filesystem date_time program_options thread 
+[1.634s] -- Found moveit_task_constructor_core: 0.1.3 (/home/jerome/ws_moveit2/install/moveit_task_constructor_core/share/moveit_task_constructor_core/cmake)
+[1.674s] -- Found ament_lint_auto: 0.12.14 (/opt/ros/humble/share/ament_lint_auto/cmake)
+[1.755s] -- Added test 'cppcheck' to perform static code analysis on C / C++ code
+[1.755s] -- Configured cppcheck include dirs: $<BUILD_INTERFACE:/home/jerome/arm_new/src/pick_and_place/include>
+[1.755s] -- Configured cppcheck exclude dirs and/or files: 
+[1.756s] -- Added test 'flake8' to check Python code syntax and style conventions
+[1.757s] -- Added test 'lint_cmake' to check CMake code style
+[1.758s] -- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257
+[1.759s] -- Added test 'uncrustify' to check C / C++ code style
+[1.759s] -- Configured uncrustify additional arguments: 
+[1.759s] -- Added test 'xmllint' to check XML markup files
+[1.761s] -- Configuring done
+[1.787s] -- Generating done
+[1.794s] -- Build files have been written to: /home/jerome/arm_new/build/pick_and_place
+[1.803s] Invoked command in '/home/jerome/arm_new/build/pick_and_place' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/jerome/ws_moveit2/install/moveit_configs_utils:/home/jerome/ws_moveit2/install/launch_param_builder:/opt/ros/humble /usr/bin/cmake /home/jerome/arm_new/src/pick_and_place -DCMAKE_INSTALL_PREFIX=/home/jerome/arm_new/install/pick_and_place
+[1.803s] Invoking command in '/home/jerome/arm_new/build/pick_and_place': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/jerome/ws_moveit2/install/moveit_configs_utils:/home/jerome/ws_moveit2/install/launch_param_builder:/opt/ros/humble /usr/bin/cmake --build /home/jerome/arm_new/build/pick_and_place -- -j16 -l16
+[1.871s] [ 25%] [32mBuilding CXX object CMakeFiles/pick_and_place.dir/src/pick_and_place.cpp.o[0m
+[1.872s] [ 50%] [32mBuilding CXX object CMakeFiles/mtc_tutorial.dir/src/mtc.cpp.o[0m
+[9.195s] [ 75%] [32m[1mLinking CXX executable mtc_tutorial[0m
+[9.574s] [ 75%] Built target mtc_tutorial
+[9.606s] [100%] [32m[1mLinking CXX executable pick_and_place[0m
+[10.069s] [100%] Built target pick_and_place
+[10.082s] Invoked command in '/home/jerome/arm_new/build/pick_and_place' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/jerome/ws_moveit2/install/moveit_configs_utils:/home/jerome/ws_moveit2/install/launch_param_builder:/opt/ros/humble /usr/bin/cmake --build /home/jerome/arm_new/build/pick_and_place -- -j16 -l16
+[10.084s] Invoking command in '/home/jerome/arm_new/build/pick_and_place': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/jerome/ws_moveit2/install/moveit_configs_utils:/home/jerome/ws_moveit2/install/launch_param_builder:/opt/ros/humble /usr/bin/cmake --install /home/jerome/arm_new/build/pick_and_place
+[10.096s] -- Install configuration: ""
+[10.096s] -- Installing: /home/jerome/arm_new/install/pick_and_place/lib/pick_and_place/mtc_tutorial
+[10.098s] -- Set runtime path of "/home/jerome/arm_new/install/pick_and_place/lib/pick_and_place/mtc_tutorial" to ""
+[10.098s] -- Installing: /home/jerome/arm_new/install/pick_and_place/share/pick_and_place//launch
+[10.098s] -- Installing: /home/jerome/arm_new/install/pick_and_place/share/pick_and_place//launch/pick_new.launch.py
+[10.099s] -- Installing: /home/jerome/arm_new/install/pick_and_place/share/pick_and_place//launch/pick_and_place.launch.py
+[10.099s] -- Installing: /home/jerome/arm_new/install/pick_and_place/lib/pick_and_place/pick_and_place
+[10.101s] -- Set runtime path of "/home/jerome/arm_new/install/pick_and_place/lib/pick_and_place/pick_and_place" to ""
+[10.101s] -- Installing: /home/jerome/arm_new/install/pick_and_place/share/ament_index/resource_index/package_run_dependencies/pick_and_place
+[10.101s] -- Installing: /home/jerome/arm_new/install/pick_and_place/share/ament_index/resource_index/parent_prefix_path/pick_and_place
+[10.101s] -- Installing: /home/jerome/arm_new/install/pick_and_place/share/pick_and_place/environment/ament_prefix_path.sh
+[10.101s] -- Installing: /home/jerome/arm_new/install/pick_and_place/share/pick_and_place/environment/ament_prefix_path.dsv
+[10.101s] -- Installing: /home/jerome/arm_new/install/pick_and_place/share/pick_and_place/environment/path.sh
+[10.102s] -- Installing: /home/jerome/arm_new/install/pick_and_place/share/pick_and_place/environment/path.dsv
+[10.102s] -- Installing: /home/jerome/arm_new/install/pick_and_place/share/pick_and_place/local_setup.bash
+[10.102s] -- Installing: /home/jerome/arm_new/install/pick_and_place/share/pick_and_place/local_setup.sh
+[10.102s] -- Installing: /home/jerome/arm_new/install/pick_and_place/share/pick_and_place/local_setup.zsh
+[10.102s] -- Installing: /home/jerome/arm_new/install/pick_and_place/share/pick_and_place/local_setup.dsv
+[10.102s] -- Installing: /home/jerome/arm_new/install/pick_and_place/share/pick_and_place/package.dsv
+[10.102s] -- Installing: /home/jerome/arm_new/install/pick_and_place/share/ament_index/resource_index/packages/pick_and_place
+[10.102s] -- Installing: /home/jerome/arm_new/install/pick_and_place/share/pick_and_place/cmake/pick_and_placeConfig.cmake
+[10.102s] -- Installing: /home/jerome/arm_new/install/pick_and_place/share/pick_and_place/cmake/pick_and_placeConfig-version.cmake
+[10.102s] -- Installing: /home/jerome/arm_new/install/pick_and_place/share/pick_and_place/package.xml
+[10.103s] Invoked command in '/home/jerome/arm_new/build/pick_and_place' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/jerome/ws_moveit2/install/moveit_configs_utils:/home/jerome/ws_moveit2/install/launch_param_builder:/opt/ros/humble /usr/bin/cmake --install /home/jerome/arm_new/build/pick_and_place

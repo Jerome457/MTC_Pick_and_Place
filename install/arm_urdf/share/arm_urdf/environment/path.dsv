@@ -1,1 +1,1 @@
-prepend-non-duplicate-if-exists;PATH;bin
+/home/jerome/arm_new/build/arm_urdf/ament_cmake_environment_hooks/path.dsv
