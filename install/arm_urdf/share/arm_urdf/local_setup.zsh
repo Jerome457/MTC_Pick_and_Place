@@ -1,1 +1,0 @@
-/home/jerome/arm_new/build/arm_urdf/ament_cmake_environment_hooks/local_setup.zsh

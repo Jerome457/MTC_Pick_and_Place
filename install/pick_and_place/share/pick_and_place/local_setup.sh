@@ -1,1 +1,0 @@
-/home/jerome/arm_new/build/pick_and_place/ament_cmake_environment_hooks/local_setup.sh

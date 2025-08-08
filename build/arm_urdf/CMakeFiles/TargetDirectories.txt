@@ -1,9 +1,0 @@
-/home/jerome/arm_new/build/arm_urdf/CMakeFiles/uninstall.dir
-/home/jerome/arm_new/build/arm_urdf/CMakeFiles/arm_urdf_uninstall.dir
-/home/jerome/arm_new/build/arm_urdf/CMakeFiles/test.dir
-/home/jerome/arm_new/build/arm_urdf/CMakeFiles/edit_cache.dir
-/home/jerome/arm_new/build/arm_urdf/CMakeFiles/rebuild_cache.dir
-/home/jerome/arm_new/build/arm_urdf/CMakeFiles/list_install_components.dir
-/home/jerome/arm_new/build/arm_urdf/CMakeFiles/install.dir
-/home/jerome/arm_new/build/arm_urdf/CMakeFiles/install/local.dir
-/home/jerome/arm_new/build/arm_urdf/CMakeFiles/install/strip.dir

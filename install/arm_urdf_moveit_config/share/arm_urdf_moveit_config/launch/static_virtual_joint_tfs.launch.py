@@ -1,1 +1,0 @@
-/home/jerome/arm_new/src/arm_urdf_moveit_config/launch/static_virtual_joint_tfs.launch.py

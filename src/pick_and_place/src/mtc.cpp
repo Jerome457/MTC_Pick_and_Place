@@ -17,6 +17,11 @@
 
 static const rclcpp::Logger LOGGER = rclcpp::get_logger("mtc_tutorial");
 namespace mtc = moveit::task_constructor;
+int e=0;
+int num_objects = 3;
+double start_x = 0.3;
+// double end_x = 0.7;
+double spacing = 0.1;
 
 class MTCTaskNode
 {
@@ -25,13 +30,13 @@ public:
 
   rclcpp::node_interfaces::NodeBaseInterface::SharedPtr getNodeBaseInterface();
 
-  void doTask();
+  void doTask(int e);
 
   void setupPlanningScene();
 
 private:
   // Compose an MTC task from a series of stages.
-  mtc::Task createTask();
+  mtc::Task createTask(int i);
   mtc::Task task_;
   rclcpp::Node::SharedPtr node_;
 };
@@ -48,75 +53,90 @@ MTCTaskNode::MTCTaskNode(const rclcpp::NodeOptions& options)
 
 void MTCTaskNode::setupPlanningScene()
 {
-// ----- Add Object -----
-moveit_msgs::msg::CollisionObject object;
-object.id = "object";
-object.header.frame_id = "world";
-object.primitives.resize(1);
-object.primitives[0].type = shape_msgs::msg::SolidPrimitive::CYLINDER;
-object.primitives[0].dimensions = {0.1, 0.02};  // height, radius
-
-geometry_msgs::msg::Pose object_pose;
-object_pose.position.x = 0.7;
-object_pose.position.y = 0.0;
-object_pose.position.z = 0.05;  // Make sure it's above ground
-object_pose.orientation.w = 1.0;  // valid quaternion
-object.primitive_poses.push_back(object_pose);
-object.operation = object.ADD;
-
-// ----- Add Ground Plane -----
-moveit_msgs::msg::CollisionObject ground;
-ground.id = "ground_plane";
-ground.header.frame_id = "base_link";  // or your planning frame
-
-shape_msgs::msg::SolidPrimitive ground_shape;
-ground_shape.type = shape_msgs::msg::SolidPrimitive::BOX;
-ground_shape.dimensions = {4.0, 4.0, 0.01};  // large thin box
-
-geometry_msgs::msg::Pose ground_pose;
-ground_pose.position.z = -0.05;  // top of ground at z=0
-ground_pose.orientation.w = 1.0;
-
-ground.primitives.push_back(ground_shape);
-ground.primitive_poses.push_back(ground_pose);
-ground.operation = ground.ADD;
-
-// ----- Set Colors -----
-moveit_msgs::msg::ObjectColor object_color;
-object_color.id = "object";
-object_color.color.r = 0.0;
-object_color.color.g = 1.0;
-object_color.color.b = 0.0;
-object_color.color.a = 1.0;
-
-moveit_msgs::msg::ObjectColor ground_color;
-ground_color.id = "ground_plane";
-ground_color.color.r = 0.0;
-ground_color.color.g = 0.0;
-ground_color.color.b = 1.0;
-ground_color.color.a = 0.0;
-
-// ----- Publish Planning Scene with Color -----
-moveit_msgs::msg::PlanningScene scene_msg;
-scene_msg.is_diff = true;
-scene_msg.world.collision_objects.push_back(object);
-scene_msg.world.collision_objects.push_back(ground);
-scene_msg.object_colors.push_back(object_color);
-scene_msg.object_colors.push_back(ground_color);
-
-// Publisher must be kept alive until message is sent
-auto planning_scene_pub = node_->create_publisher<moveit_msgs::msg::PlanningScene>("/planning_scene", 10);
-rclcpp::Rate rate(10);
-for (int i = 0; i < 5; ++i) {
-  planning_scene_pub->publish(scene_msg);
-  rate.sleep();
-}
-
-}
-
-void MTCTaskNode::doTask()
 {
-  task_ = createTask();
+  // ----- Add Multiple Cylinders -----
+  std::vector<moveit_msgs::msg::CollisionObject> objects;
+  std::vector<moveit_msgs::msg::ObjectColor> colors;
+
+
+  for (int i = 0; i < num_objects; ++i) {
+    moveit_msgs::msg::CollisionObject obj;
+    obj.id = "object_" + std::to_string(i + 1);
+    obj.header.frame_id = "world";
+
+    obj.primitives.resize(1);
+    obj.primitives[0].type = shape_msgs::msg::SolidPrimitive::CYLINDER;
+    obj.primitives[0].dimensions = {0.1, 0.02};  // height, radius
+
+    geometry_msgs::msg::Pose pose;
+    pose.position.x = start_x + i * spacing;
+    pose.position.y = 0.0;
+    pose.position.z = 0.05;  // above ground
+    pose.orientation.w = 1.0;
+    obj.primitive_poses.push_back(pose);
+
+    obj.operation = obj.ADD;
+    objects.push_back(obj);
+
+    // Assign a color (e.g., alternating)
+    moveit_msgs::msg::ObjectColor color;
+    color.id = obj.id;
+    color.color.r = (i % 3 == 0) ? 1.0 : 0.0;  // red every 3rd
+    color.color.g = (i % 3 == 1) ? 1.0 : 0.0;  // green
+    color.color.b = (i % 3 == 2) ? 1.0 : 0.0;  // blue
+    color.color.a = 1.0;
+    colors.push_back(color);
+  }
+
+  // ----- Add Ground Plane -----
+  moveit_msgs::msg::CollisionObject ground;
+  ground.id = "ground_plane";
+  ground.header.frame_id = "base_link";  // or your planning frame
+
+  shape_msgs::msg::SolidPrimitive ground_shape;
+  ground_shape.type = shape_msgs::msg::SolidPrimitive::BOX;
+  ground_shape.dimensions = {4.0, 4.0, 0.01};
+
+  geometry_msgs::msg::Pose ground_pose;
+  ground_pose.position.z = -0.05;
+  ground_pose.orientation.w = 1.0;
+
+  ground.primitives.push_back(ground_shape);
+  ground.primitive_poses.push_back(ground_pose);
+  ground.operation = ground.ADD;
+
+  moveit_msgs::msg::ObjectColor ground_color;
+  ground_color.id = "ground_plane";
+  ground_color.color.r = 0.0;
+  ground_color.color.g = 0.0;
+  ground_color.color.b = 1.0;
+  ground_color.color.a = 0.0;
+
+  // ----- Publish Planning Scene -----
+  moveit_msgs::msg::PlanningScene scene_msg;
+  scene_msg.is_diff = true;
+
+  // Add all objects
+  for (auto& obj : objects) scene_msg.world.collision_objects.push_back(obj);
+  scene_msg.world.collision_objects.push_back(ground);
+
+  // Add all colors
+  for (auto& col : colors) scene_msg.object_colors.push_back(col);
+  scene_msg.object_colors.push_back(ground_color);
+
+  // Publish multiple times to ensure reception
+  auto planning_scene_pub = node_->create_publisher<moveit_msgs::msg::PlanningScene>("/planning_scene", 10);
+  rclcpp::Rate rate(10);
+  for (int i = 0; i < 5; ++i) {
+    planning_scene_pub->publish(scene_msg);
+    rate.sleep();
+  }
+}
+}
+
+void MTCTaskNode::doTask(int a)
+{
+  task_ = createTask(a);
 
   try
   {
@@ -131,6 +151,7 @@ void MTCTaskNode::doTask()
   if (!task_.plan(5))
   {
     RCLCPP_ERROR_STREAM(LOGGER, "Task planning failed");
+    --e;
     return;
   }
   task_.introspection().publishSolution(*task_.solutions().front());
@@ -139,16 +160,20 @@ void MTCTaskNode::doTask()
   if (result.val != moveit_msgs::msg::MoveItErrorCodes::SUCCESS)
   {
     RCLCPP_ERROR_STREAM(LOGGER, "Task execution failed");
+    --e;
     return;
   }
+// moveit_task_constructor_msgs::msg::Solution empty_solution;
+// solution_pub_->publish(empty_solution);
+
 
   return;
 }
 
-mtc::Task MTCTaskNode::createTask()
+mtc::Task MTCTaskNode::createTask(int i)
 {
   mtc::Task task;
-  task.stages()->setName("demo task");
+  task.stages()->setName("demo task" + std::to_string(i + 1));
   task.loadRobotModel(node_);
 
   const auto& arm_group_name = "arm";
@@ -207,7 +232,7 @@ mtc::Stage* attach_object_stage =
         stage->properties().set("marker_ns", "approach_object");
         stage->properties().set("link", hand_frame);
         stage->properties().configureInitFrom(mtc::Stage::PARENT, { "group" });
-        stage->setMinMaxDistance(0.1, 0.15);
+        stage->setMinMaxDistance(0.05, 0.15);
       
         // Set hand forward direction
         geometry_msgs::msg::Vector3Stamped vec;
@@ -223,7 +248,7 @@ mtc::Stage* attach_object_stage =
         stage->properties().configureInitFrom(mtc::Stage::PARENT);
         stage->properties().set("marker_ns", "grasp_pose");
         stage->setPreGraspPose("open");
-        stage->setObject("object");
+        stage->setObject("object_" + std::to_string(i + 1));
         stage->setAngleDelta(M_PI / 12);
         stage->setMonitoredStage(current_state_ptr);  // Hook into current state
 
@@ -247,8 +272,8 @@ mtc::Stage* attach_object_stage =
       {
         auto stage =
             std::make_unique<mtc::stages::ModifyPlanningScene>("allow collision (soft_fingers,object)");
-        stage->allowCollisions("object", "Soft_finger_1", true);
-        stage->allowCollisions("object", "Soft_finger_2", true);
+        stage->allowCollisions("object_" + std::to_string(i + 1), "Soft_finger_1", true);
+        stage->allowCollisions("object_" + std::to_string(i + 1), "Soft_finger_2", true);
         grasp->insert(std::move(stage));
       }
 
@@ -260,8 +285,8 @@ mtc::Stage* attach_object_stage =
       }
 
       {
-        auto stage = std::make_unique<mtc::stages::ModifyPlanningScene>("attach object");
-        stage->attachObject("object", hand_frame);
+        auto stage = std::make_unique<mtc::stages::ModifyPlanningScene>("attach object" + std::to_string(i + 1));
+        stage->attachObject("object_" + std::to_string(i + 1), hand_frame);
         attach_object_stage = stage.get();
         grasp->insert(std::move(stage));
       }
@@ -306,12 +331,12 @@ mtc::Stage* attach_object_stage =
         auto stage = std::make_unique<mtc::stages::GeneratePlacePose>("generate place pose");
         stage->properties().configureInitFrom(mtc::Stage::PARENT);
         stage->properties().set("marker_ns", "place_pose");
-        stage->setObject("object");
+        stage->setObject("object_" + std::to_string(i + 1));
       
         geometry_msgs::msg::PoseStamped target_pose_msg;
         target_pose_msg.header.frame_id = "base_footprint";
-        target_pose_msg.pose.position.y = 0.2;
-        target_pose_msg.pose.position.x = -0.4;
+        target_pose_msg.pose.position.y = 0.2-0.1*i;
+        target_pose_msg.pose.position.x = -0.5;
         target_pose_msg.pose.position.z=0.05;
         target_pose_msg.pose.orientation.w = 1.0;
         stage->setPose(target_pose_msg);
@@ -322,7 +347,7 @@ mtc::Stage* attach_object_stage =
             std::make_unique<mtc::stages::ComputeIK>("place pose IK", std::move(stage));
         wrapper->setMaxIKSolutions(2);
         wrapper->setMinSolutionDistance(1.0);
-        wrapper->setIKFrame("object");
+        wrapper->setIKFrame("object_" + std::to_string(i + 1));
         wrapper->properties().configureInitFrom(mtc::Stage::PARENT, { "eef", "group" });
         wrapper->properties().configureInitFrom(mtc::Stage::INTERFACE, { "target_pose" });
         place->insert(std::move(wrapper));
@@ -336,34 +361,35 @@ mtc::Stage* attach_object_stage =
       {
         auto stage =
             std::make_unique<mtc::stages::ModifyPlanningScene>("forbid collision (hand,object)");
-        stage->allowCollisions("object", "Soft_finger_1", false);
-        stage->allowCollisions("object", "Soft_finger_2", false);
+        stage->allowCollisions("object_" + std::to_string(i + 1), "Soft_finger_1", false);
+        stage->allowCollisions("object_" + std::to_string(i + 1), "Soft_finger_2", false);
         place->insert(std::move(stage));
       }
 
       {
         auto stage = std::make_unique<mtc::stages::ModifyPlanningScene>("detach object");
-        stage->detachObject("object", hand_frame);
+        stage->detachObject("object_" + std::to_string(i + 1), hand_frame);
         place->insert(std::move(stage));
       }
 
       {
         auto stage = std::make_unique<mtc::stages::MoveRelative>("retreat", cartesian_planner);
         stage->properties().configureInitFrom(mtc::Stage::PARENT, { "group" });
-        stage->setMinMaxDistance(0.1, 0.3);
+        stage->setMinMaxDistance(0.05, 0.3);
         stage->setIKFrame(hand_frame);
         stage->properties().set("marker_ns", "retreat");
       
         // Set retreat direction
         geometry_msgs::msg::Vector3Stamped vec;
         vec.header.frame_id = "world";
-        vec.vector.x = 0.1;
+        vec.vector.x = 0.025;
         stage->setDirection(vec);
         place->insert(std::move(stage));
       }
 
       task.add(std::move(place));
     }
+    if(i==num_objects-1)
     {
       auto stage = std::make_unique<mtc::stages::MoveTo>("return home", sampling_planner);
       stage->properties().configureInitFrom(mtc::Stage::PARENT, { "group" });
@@ -390,7 +416,8 @@ int main(int argc, char** argv)
   });
 
   mtc_task_node->setupPlanningScene();
-  mtc_task_node->doTask();
+  for(e=0;e<num_objects;e++)
+    mtc_task_node->doTask(e);
 
   spin_thread->join();
   rclcpp::shutdown();

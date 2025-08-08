@@ -1,1 +1,0 @@
-/home/jerome/arm_new/src/arm_urdf_moveit_config/launch/moveit_rviz.launch.py

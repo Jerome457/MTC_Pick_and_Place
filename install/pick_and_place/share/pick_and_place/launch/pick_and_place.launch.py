@@ -1,1 +1,0 @@
-/home/jerome/arm_new/src/pick_and_place/launch/pick_and_place.launch.py
