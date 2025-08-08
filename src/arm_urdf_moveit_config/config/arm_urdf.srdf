@@ -28,11 +28,11 @@
         <joint name="AX_12A_04_Revolute-34" value="-0.1562"/>
     </group_state>
     <group_state name="ready" group="arm">
-        <joint name="base_link_link1_to_base_link" value="0"/>
-        <joint name="link1_link2_to_link1" value="0"/>
-        <joint name="link2_link3_to_link2" value="0"/>
-        <joint name="link3_link4_to_link3" value="0"/>
-        <joint name="link4_link5_to_link4" value="0"/>
+        <joint name="base_link_link1_to_base_link" value="0.085"/>
+        <joint name="link1_link2_to_link1" value="-1.138"/>
+        <joint name="link2_link3_to_link2" value="-0.221"/>
+        <joint name="link3_link4_to_link3" value="1.308"/>
+        <joint name="link4_link5_to_link4" value="01.715"/>
         <joint name="link5_link6_to_link5" value="0"/>
     </group_state>
     <!--END EFFECTOR: Purpose: Represent information about an end effector.-->
